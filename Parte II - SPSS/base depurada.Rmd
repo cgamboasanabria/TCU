@@ -1,0 +1,776 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+```{r}
+library(sjmisc)
+library(dplyr)
+library(data.table)
+library(tidyr)
+
+base<-tbl_df(read_spss("EAP etica estudiantes.sav"))
+base<-base%>%
+  select(-1)
+base
+```
+#P1
+```{r}
+base<-base%>%
+    rename(nombre=IG1)
+base
+```
+
+#P2   
+
+```{r}
+base[, 2:6]<-apply(base[, 2:6], 2, recode, `2`="", `1`="Y")
+
+base[, 2]<-ifelse(base[,2]=="Y", 16, 0)
+base[, 3]<-ifelse(base[,3]=="Y", 8, 0)
+base[, 4]<-ifelse(base[,4]=="Y", 4, 0)
+base[, 5]<-ifelse(base[,5]=="Y", 2, 0)
+base[, 6]<-ifelse(base[,6]=="Y", 1, 0)
+
+base<-base%>%
+    mutate(carrera=apply(base[, 2:6], 1, sum))
+
+sort(unique(base$carrera))
+
+base$carrera<-recode(base$carrera, `0`=99, `2`=1, `4`=2, `6`=3, `8`=4, `12`=5, `16`=6, `17`=7, `20`=8, `24`=9, `25`=10, `28`=11, `30`=12)
+base<-base%>%
+    select(-c(2:6))
+base
+```
+
+#P3    
+
+```{r}
+base[, 2:6]<-apply(base[, 2:6], 2, recode, `2`="", `1`="Y")
+
+base[, 2]<-ifelse(base[,2]=="Y", 16, 0)
+base[, 3]<-ifelse(base[,3]=="Y", 8, 0)
+base[, 4]<-ifelse(base[,4]=="Y", 4, 0)
+base[, 5]<-ifelse(base[,5]=="Y", 2, 0)
+base[, 6]<-ifelse(base[,6]=="Y", 1, 0)
+
+base<-base%>%
+    mutate(P3=apply(base[, 2:6], 1, sum))
+
+sort(unique(base$P3))
+
+base$P3<-recode(base$P3, `10`=9, `16`=10, `17`=11)
+base<-base%>%
+    select(-c(2:6))
+base
+```
+
+#P4
+
+```{r}
+base<-rename(base, P4=IG4)
+base$P4<-recode(base$P4, `9`=99, `1`=4, `2`=3, `3`=2, `4`=1)
+base
+```
+
+#P5
+
+```{r}
+base$SEAN1<-recode(base$SEAN1, `9`=99, `2`=0)
+base<-rename(base, P5=SEAN1)
+base
+```
+
+#P6
+
+```{r}
+base<-base%>%
+    rename(P6=SEAN2)
+base
+```
+
+#P7   
+
+```{r}
+base<-rename(base, P7=SEAN3)
+base$P7<-recode(base$P7, `9`=99, `1`=4, `2`=3, `3`=2, `4`=1)
+base
+```
+
+#P8   
+
+```{r}
+base<-rename(base, P8=SEAN4)
+base$P8<-recode(base$P8, `1`=4, `2`=3, `3`=2, `4`=1)
+base
+```
+
+#P9     
+
+```{r}
+base<-rename(base, P9=SEAN5)
+base$P9<-recode(base$P9, `1`=4, `2`=3, `3`=2, `4`=1)
+base
+```
+
+#P10    
+
+##P10_A
+```{r}
+base$SEAN6_A1<-recode(base$SEAN6_A1, `9`=99, `2`=0)
+base<-rename(base, P10_A1=SEAN6_A1)
+base<-rename(base, P10_A2=SEAN6_A2)
+base
+```
+
+##P10_B
+```{r}
+base$SEAN6_B1<-recode(base$SEAN6_B1, `9`=99, `2`=0)
+base<-rename(base, P10_B1=SEAN6_B1)
+base<-rename(base, P10_B2=SEAN6_B2)
+base
+```
+
+##P10_C
+```{r}
+base$SEAN6_C1<-recode(base$SEAN6_C1, `9`=99, `2`=0)
+base<-rename(base, P10_C1=SEAN6_C1)
+base<-rename(base, P10_C2=SEAN6_C2)
+base
+```
+
+##P10_D
+```{r}
+base$SEAN6_D1<-recode(base$SEAN6_D1, `9`=99, `2`=0)
+base<-rename(base, P10_D1=SEAN6_D1)
+base<-rename(base, P10_D2=SEAN6_D2)
+base
+```
+
+##P10_E
+```{r}
+base$SEAN6_E1<-recode(base$SEAN6_E1, `9`=99, `2`=0)
+base<-rename(base, P10_E1=SEAN6_E1)
+base<-rename(base, P10_E2=SEAN6_E2)
+base
+```
+
+##P10_F
+```{r}
+base$SEAN6_F1<-recode(base$SEAN6_F1, `9`=99, `2`=0)
+base<-rename(base, P10_F1=SEAN6_F1)
+base<-rename(base, P10_F2=SEAN6_F2)
+base
+```
+
+##P10_G
+```{r}
+base$SEAN6_G1<-recode(base$SEAN6_G1, `9`=99, `2`=0)
+base<-rename(base, P10_G1=SEAN6_G1)
+base<-rename(base, P10_G2=SEAN6_G2)
+base
+```
+
+##P10_H
+```{r}
+base$SEAN6_H1<-recode(base$SEAN6_H1, `9`=99, `2`=0)
+base<-rename(base, P10_H1=SEAN6_H1)
+base<-rename(base, P10_H2=SEAN6_H2)
+base
+```
+
+##P10_I
+```{r}
+base$SEAN6_I1<-recode(base$SEAN6_I1, `9`=99, `2`=0)
+base<-rename(base, P10_I1=SEAN6_I1)
+base<-rename(base, P10_I2=SEAN6_I2)
+base
+```
+
+##P10_J
+```{r}
+base$SEAN6_J1<-recode(base$SEAN6_J1, `9`=99, `2`=0)
+base<-rename(base, P10_J1=SEAN6_J1)
+base<-rename(base, P10_J2=SEAN6_J2)
+base
+```
+
+#P11
+
+```{r}
+base$SEAN7<-recode(base$SEAN7, `9`=99, `2`=0)
+base<-rename(base, P11=SEAN7)
+base
+```
+
+#P12
+
+```{r}
+base<-base%>%
+    rename(P12=SEAN8)
+base
+```
+
+#P13_A
+
+```{r}
+base<-base%>%
+    rename(P13_A=SEAN9_A)
+base
+```
+
+
+#P13_B
+
+```{r}
+base<-base%>%
+    rename(P13_B=SEAN9_B)
+base
+```
+
+
+#P13_C
+
+```{r}
+base<-base%>%
+    rename(P13_C=SEAN9_C)
+base
+```
+
+
+#P13_D
+
+```{r}
+base<-base%>%
+    rename(P13_D=SEAN9_D)
+base
+```
+
+
+#P13_E
+
+```{r}
+base<-base%>%
+    rename(P13_E=SEAN9_E)
+base
+```
+
+#P14
+
+```{r}
+base$SEAN10<-recode(base$SEAN10, `9`=99, `2`=0)
+base<-rename(base, P14=SEAN10)
+base
+```
+
+#P15
+
+```{r}
+base<-base%>%
+    rename(P15=SEAN11)
+base
+```
+
+#P16
+
+```{r}
+base$SEAN12<-recode(base$SEAN12, `9`=99, `2`=0)
+base<-rename(base, P16=SEAN12)
+base
+```
+
+#P17
+
+```{r}
+base<-base%>%
+    rename(P17=SEAN13)
+base
+```
+
+#P18_A
+
+```{r}
+base<-rename(base, P18_A=SEAN14_A)
+base
+```
+
+#P18_B
+
+```{r}
+base<-rename(base, P18_B=SEAN14_B)
+base
+```
+
+#P18_C
+
+```{r}
+base<-rename(base, P18_C=SEAN14_C)
+base
+```
+
+#P18_D
+
+```{r}
+base<-rename(base, P18_D=SEAN14_D)
+base
+```
+
+#P18_E
+
+```{r}
+base<-rename(base, P18_E=SEAN14_E)
+base
+```
+
+#P18_F
+
+```{r}
+base<-rename(base, P18_F=SEAN14_E1)
+base
+```
+
+#P19_A
+
+```{r}
+base<-rename(base, P19_A=SEAN15_A)
+base
+```
+
+#P19_B
+
+```{r}
+base<-rename(base, P19_B=SEAN15_B)
+base
+```
+
+#P19_C
+
+```{r}
+base<-rename(base, P19_C=SEAN15_C)
+base
+```
+
+#P19_D
+
+```{r}
+base<-rename(base, P19_D=SEAN15_D)
+base
+```
+
+#P19_E
+
+```{r}
+base<-rename(base, P19_E=SEAN15_E)
+base
+```
+
+#P19_F
+
+```{r}
+base<-rename(base, P19_F=SEAN15_E1)
+base
+```
+
+#P20
+
+```{r}
+base$SEAN16<-recode(base$SEAN16, `9`=99, `2`=0)
+base<-rename(base, P20=SEAN16)
+base
+```
+
+#P21_A
+
+```{r}
+base<-unite(base, P21_A, c(SEAN17_A1, SEAN17_B1, SEAN17_C1, SEAN17_D1, SEAN17_E1, SEAN17_F1, SEAN17_G1, SEAN17_H1, SEAN17_I1))%>%
+    separate(P21_A, into=c("P21_A1", "P21_A2", "P21_A3", "P21_A4", "P21_A5", "P21_A6", "P21_A7", "P21_A8", "P21_A9"), sep="_")
+base
+```
+
+#P21_B
+
+```{r}
+base<-unite(base, P21_B, c(SEAN17_A2, SEAN17_B2, SEAN17_C2, SEAN17_D2, SEAN17_E2, SEAN17_F2, SEAN17_G2, SEAN17_H2, SEAN17_I2))%>%
+    separate(P21_B, into=c("P21_B1", "P21_B2", "P21_B3", "P21_B4", "P21_B5", "P21_B6", "P21_B7", "P21_B8", "P21_B9"), sep="_")
+base
+```
+
+#P21_C
+
+```{r}
+base<-unite(base, P21_C, c(SEAN17_A3, SEAN17_B3, SEAN17_C3, SEAN17_D3, SEAN17_E3, SEAN17_F3, SEAN17_G3, SEAN17_H3, SEAN17_I3))%>%
+    separate(P21_C, into=c("P21_C1", "P21_C2", "P21_C3", "P21_C4", "P21_C5", "P21_C6", "P21_C7", "P21_C8", "P21_C9"), sep="_")
+base
+```
+
+#P21_D
+
+```{r}
+base<-unite(base, P21_D, c(SEAN17_A4, SEAN17_B4, SEAN17_C4, SEAN17_D4, SEAN17_E4, SEAN17_F4, SEAN17_G4, SEAN17_H4, SEAN17_I4))%>%
+    separate(P21_D, into=c("P21_D1", "P21_D2", "P21_D3", "P21_D4", "P21_D5", "P21_D6", "P21_D7", "P21_D8", "P21_D9"), sep="_")
+base
+```
+
+#P21_E
+
+```{r}
+base<-unite(base, P21_E, c(SEAN17_A5, SEAN17_B5, SEAN17_C5, SEAN17_D5, SEAN17_E5, SEAN17_F5, SEAN17_G5, SEAN17_H5, SEAN17_I5))%>%
+    separate(P21_E, into=c("P21_E1", "P21_E2", "P21_E3", "P21_E4", "P21_E5", "P21_E6", "P21_E7", "P21_E8", "P21_E9"), sep="_")
+base
+```
+
+#P22
+
+```{r}
+base$SEAN18<-recode(base$SEAN18, `9`=99, `2`=0)
+base<-rename(base, P22=SEAN18)
+base
+```
+
+#P23
+
+```{r}
+base<-base%>%
+    rename(P23=SEAN19)
+base
+```
+
+#P24
+
+```{r}
+base<-rename(base, P24_1=SEAN20)
+base<-rename(base, P24_2=SEAN20A)
+base
+```
+
+#P24_A
+
+```{r}
+base<-rename(base, P24_A1=SEAN20_A)
+base<-rename(base, P24_A2=SEAN20_B)
+base
+```
+
+#P25
+
+```{r}
+base<-rename(base, P25_1=SEAN21_A1)
+base<-rename(base, P25_2=SEAN21_B1)
+base<-rename(base, P25_3=SEAN21_C1)
+base
+```
+
+#P25_A
+
+```{r}
+base<-unite(base, P25_A, c(SEAN21_A2, SEAN21_B2, SEAN21_C2))
+base
+```
+
+#P26
+
+```{r}
+base<-rename(base, P26=SEAN22)
+base
+```
+
+#P26_1
+
+```{r}
+base<-base%>%
+    rename(P26_A=SEAN22_A)
+base
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#P27_A
+
+```{r}
+base<-base%>%
+  rename(P27_A=BB1)%>%
+  mutate(P27_A=substring(base$BB1, 2, 2))
+```
+
+#P27_B
+
+```{r}
+base<-base%>%
+  rename(P27_B=BB2)%>%
+  mutate(P27_B=substring(base$BB2, 2, 2))
+```
+
+#P27_C
+
+```{r}
+base<-base%>%
+  rename(P27_C=BB3)%>%
+  mutate(P27_C=substring(base$BB3, 2, 2))
+```
+
+#P27_D
+
+```{r}
+base<-base%>%
+  rename(P27_D=BB4)%>%
+  mutate(P27_D=substring(base$BB4, 2, 2))
+```
+
+#P27_E
+
+```{r}
+base<-base%>%
+  rename(P27_E=BB5)%>%
+  mutate(P27_E=substring(base$BB5, 2, 2))
+```
+
+#P27_F
+
+```{r}
+base<-base%>%
+  rename(P27_F=BB6)%>%
+  mutate(P27_F=substring(base$BB6, 2, 2))
+```
+
+#P27_G
+
+```{r}
+base<-base%>%
+  rename(P27_G=BB7)%>%
+  mutate(P27_G=substring(base$BB7, 2, 2))
+```
+
+#P27_G
+
+```{r}
+base<-rename(base, P27_H=BBB)
+```
+
+#P28_A
+
+```{r}
+base<-base%>%
+  rename(P28_A=CC1)%>%
+  mutate(P28_A=substring(base$CC1, 2, 2))
+```
+
+#P28_B
+
+```{r}
+base<-base%>%
+  rename(P28_B=CC2)%>%
+  mutate(P28_B=substring(base$CC2, 2, 2))
+```
+
+#P28_C
+
+```{r}
+base<-base%>%
+  rename(P28_C=CC3)%>%
+  mutate(P28_C=substring(base$CC3, 2, 2))
+```
+
+#P28_D
+
+```{r}
+base<-base%>%
+  rename(P28_D=CC4)%>%
+  mutate(P28_D=substring(base$CC4, 2, 2))
+```
+
+#P28_E
+
+```{r}
+base<-base%>%
+  rename(P28_E=CC5)%>%
+  mutate(P28_E=substring(base$CC5, 2, 2))
+```
+
+#P28_F
+
+```{r}
+base<-base%>%
+  rename(P28_F=CC6)%>%
+  mutate(P28_F=substring(base$CC6, 2, 2))
+```
+
+#P28_G
+
+```{r}
+base<-rename(base, P28_G=CCC)
+```
+
+#P29
+
+```{r}
+base<-rename(base, P29=DD)
+```
+
+#P30
+
+```{r}
+base[, 83]<-ifelse(base[, 83]=="Y", 1, 0)
+base<-base%>%
+    rename(P30=EE1)
+base<-select(base, -84)
+```
+
+#P31
+
+```{r}
+base[, 84]<-ifelse(base[, 84]=="Y", 16, 0)
+base[, 85]<-ifelse(base[, 85]=="Y", 8, 0)
+base[, 86]<-ifelse(base[, 86]=="Y", 4, 0)
+base[, 87]<-ifelse(base[, 87]=="Y", 2, 0)
+base[, 88]<-ifelse(base[, 88]=="Y", 1, 0)
+
+base<-base%>%
+    mutate(P31=apply(base[ , 84:88], 1, sum))
+
+sort(unique(base$P31))
+
+base$P31<-recode(base$P31, `0`=99, `6`=5, `8`=6, `9`=7, `10`=8, `16`=9, `18`=10, `20`=11, `24`=12)
+
+base<-base%>%
+    select(-c(84:88))
+```
+
+P31_1
+
+```{r}
+base<-rename(base, P31_1=FFF)
+```
+
+#P32
+
+```{r}
+base[, 85]<-ifelse(base[, 85]=="Y", 1, 0)
+base<-base%>%
+    rename(P32=GG1)
+base<-select(base, -86)
+```
+
+#P33_A
+
+```{r}
+base<-rename(base, P33_A=HH1)
+```
+
+#P33_B
+
+```{r}
+base<-rename(base, P33_B=HH2)
+```
+
+#P33_C
+
+```{r}
+base<-rename(base, P33_C=HH3)
+```
+
+#P33_D
+
+```{r}
+base<-rename(base, P33_D=HH4)
+```
+
+#P33_E
+
+```{r}
+base<-rename(base, P33_E=HH5)
+```
+
+#P33_F
+
+```{r}
+base<-rename(base, P33_F=HH6)
+```
+
+#P33_G
+
+```{r}
+base<-rename(base, P33_G=HH7)
+```
+
+#P33_H
+
+```{r}
+base<-rename(base, P33_H=HH8)
+```
+
+#P34
+
+```{r}
+base[, 94]<-ifelse(base[, 94]=="Y", 1, 0)
+base<-base%>%
+    rename(P34=II1)
+base<-select(base, -95)
+```
+
+#P35
+
+```{r}
+base<-select(base, -c(95, 101))
+base[, 95]<-ifelse(base[, 95]=="Y", 16, 0)
+base[, 96]<-ifelse(base[, 96]=="Y", 8, 0)
+base[, 97]<-ifelse(base[, 97]=="Y", 4, 0)
+base[, 98]<-ifelse(base[, 98]=="Y", 2, 0)
+base[, 99]<-ifelse(base[, 99]=="Y", 1, 0)
+
+base<-base%>%
+    mutate(P35=apply(base[, 95:99], 1, sum))
+
+sort(unique(base$P35))
+
+base$P35<-recode(base$P35, `0`=99, `2`=1, `8`=2, `9`=3, `10`=4, `13`=5, `15`=6, `16`=7, `17`=8, `25`=9)
+
+base<-base%>%
+    select(-c(95:99))
+```
+
+
+#P35_1
+
+```{r}
+base<-rename(base, P35_1=JJJ)
+```
+
+#P36
+
+```{r}
+base<-rename(base, P36=KK)
+```
+
+#P37
+
+```{r}
+base<-rename(base, P37=LL)
+```
+
+#Detalles finales
+
+```{r}
+base<-rename(base, P1=nombre, P2=carrera)
+base<-select(base, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10_A, P10_A, P10_B, P10_C, P10_D, P10_E, P10_F, P10_G, P10_H, P10_I, P10_J, P11, P12, P13_A, P13_B, P13_C, P13_D, P13_E, P14, P15, P16, P17, P18_A, P18_B, P18_C, P18_D, P18_E, P18_F, P19_A, P19_B, P19_C, P19_D, P19_E, P19_F, P20, P21_A1, P21_A2, P21_A3, P21_A4, P21_A5, P21_B1, P21_B2, P21_B3, P21_B4, P21_B5, P21_C1, P21_C2, P21_C3, P21_C4, P21_C5, P21_D1, P21_D2, P21_D3, P21_D4, P21_D5, P22, P23, P24, P24_1, P25, P25_1, P26, P26_1, P27_A, P27_B, P27_C, P27_D, P27_E, P27_F, P27_G, P27_H, P28_A, P28_B, P28_C, P28_D, P28_E, P28_F, P28_G, P29, P30, P31, P31_1, P32, P33_A, P33_B, P33_C, P33_D, P33_E, P33_F, P33_G, P33_H, P34, P35, P35_1, P36, P37)
+base<-base[-c(139:141), ]
+base
+```
+
+```{r}
+write.csv(base, file="estudiantes.csv")
+```
+
