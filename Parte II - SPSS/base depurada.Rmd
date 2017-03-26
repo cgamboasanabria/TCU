@@ -406,10 +406,12 @@ base$P24_1<-recode(base$P24_1, `6`=5, `8`=7, `10`=7, `12`=8, `16`=9, `18`=10, `2
 base<-base[, -c(99:100)]
 ```
 
+#P25        
+
 ```{r}
-pos<-which(rowSums(base[, c(99, 101, 103)]==8)>1)
-base$SEAN21_B1[c(7, 35, 146, 267)]<-0
-base$SEAN21_C1[pos]<-0
+pos<-t(apply(base[, c(99, 101, 103)], 1, duplicated))
+base[which(pos[, 2]==TRUE), 101]<-0
+base[which(pos[, 3]==TRUE), 103]<-0
 
 base$SEAN21_A1<-recode(base$SEAN21_A1, `1`=32, `2`=16, `3`=8, `4`=4, `5`=2, `8`=1)
 base$SEAN21_B1<-recode(base$SEAN21_B1, `1`=32, `2`=16, `3`=8, `4`=4, `5`=2, `8`=1)
@@ -417,39 +419,21 @@ base$SEAN21_C1<-recode(base$SEAN21_C1, `1`=32, `2`=16, `3`=8, `4`=4, `5`=2, `8`=
 
 base<-base%>%
     mutate(P25=apply(base[, c(99, 101, 103)], 1, sum))
-table(base$P25)
-base$P25<-recode(base$P25, `1`=30, `3`=31, `5`=32, `7`=33, `9`=34, `13`=35, `14`=5, `17`=36, `19`=37, `21`=38, `22`=9, `25`=11, `26`=12, `28`=13, `33`=17, `35`=39, `37`=40, `38`=19, `42`=21, `44`=22, `49`=42, `50`=24, `52`=25, `56`=26, `64`=43)
+
+base$P25<-recode(base$P25, `1`=30, `3`=31, `5`=32, `7`=33, `9`=34, `13`=35, `14`=5, `17`=36, `19`=37, `21`=38, `22`=9, `25`=11, `26`=12, `28`=13, `33`=17, `35`=39, `37`=40, `38`=19, `42`=21, `44`=22, `49`=42, `50`=24, `52`=25, `56`=26)
 base<-base[, -c(99, 101, 103)]
 ```
 
-
-#P25
-
-```{r}
-
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-#P25_A
+#P25_1
 
 ```{r}
-base<-unite(base, P25_A, c(SEAN21_A2, SEAN21_B2, SEAN21_C2))
+base<-unite(base, P25_1, c(SEAN21_A2, SEAN21_B2, SEAN21_C2))
 ```
 
 #P26
 
 ```{r}
+base$SEAN22<-recode(base$SEAN22, `1`=7, `2`=5, `4`=2, `8`=1, `9`=99)
 base<-rename(base, P26=SEAN22)
 ```
 
@@ -457,7 +441,7 @@ base<-rename(base, P26=SEAN22)
 
 ```{r}
 base<-base%>%
-    rename(P26_A=SEAN22_A)
+    rename(P26_1=SEAN22_A)
 ```
 
 #P27_A
@@ -575,163 +559,141 @@ base<-rename(base, P29=SEAN25)
 ```{r}
 base$EEAN1<-recode(base$EEAN1, `9`=99, `2`=0)
 base<-rename(base, P30=EEAN1)
-base[,125:153]
 ```
+
 
 #P31
 
 ```{r}
-base[, 126]<-ifelse(base[, 126]==1, 16, 0)
-base[, 127]<-ifelse(base[, 127]==1, 8, 0)
-base[, 128]<-ifelse(base[, 128]==1, 4, 0)
-base[, 129]<-ifelse(base[, 129]==1, 2, 0)
-base[, 130]<-ifelse(base[, 130]==1, 1, 0)
+base[, 119]<-ifelse(base[, 119]==1, 16, 0)
+base[, 120]<-ifelse(base[, 120]==1, 8, 0)
+base[, 121]<-ifelse(base[, 121]==1, 4, 0)
+base[, 122]<-ifelse(base[, 122]==1, 2, 0)
+base[, 123]<-ifelse(base[, 123]==1, 1, 0)
 
 base<-base%>%
-    mutate(P31=apply(base[ , 126:130], 1, sum))
+    mutate(P31=apply(base[ , 119:123], 1, sum))
 
-sort(unique(base$P31))
-
-base$P31<-recode(base$P31, `0`=99, `6`=5, `8`=6, `9`=7, `10`=8, `16`=9, `18`=10, `20`=11, `24`=12)
+base$P31<-recode(base$P31, `0`=99, `8`=6, `16`=9, `18`=10, `20`=11, `24`=12, `12`=13, `28`=14)
 
 base<-base%>%
-    select(-c(126:130))
+    select(-c(119:123))
 ```
-
-
-###################
-
-
-
-
-
-
-
-
-
 
 P31_1
 
 ```{r}
-base<-rename(base, P31_1=FFF)
+base<-rename(base, P31_1=EEAN2_E1)
 ```
 
 #P32
 
 ```{r}
-base[, 85]<-ifelse(base[, 85]=="Y", 1, 0)
-base<-base%>%
-    rename(P32=GG1)
-base<-select(base, -86)
+base$EEAN3<-recode(base$EEAN3, `9`=99, `2`=0)
+base<-rename(base, P32=EEAN3)
 ```
 
 #P33_A
 
 ```{r}
-base<-rename(base, P33_A=HH1)
+base<-rename(base, P33_A=EEAN4_A)
 ```
 
 #P33_B
 
 ```{r}
-base<-rename(base, P33_B=HH2)
+base<-rename(base, P33_B=EEAN4_B)
 ```
 
 #P33_C
 
 ```{r}
-base<-rename(base, P33_C=HH3)
+base<-rename(base, P33_C=EEAN4_C)
 ```
 
 #P33_D
 
 ```{r}
-base<-rename(base, P33_D=HH4)
+base<-rename(base, P33_D=EEAN4_D)
 ```
 
 #P33_E
 
 ```{r}
-base<-rename(base, P33_E=HH5)
+base<-rename(base, P33_E=EEAN4_E)
 ```
 
 #P33_F
 
 ```{r}
-base<-rename(base, P33_F=HH6)
+base<-rename(base, P33_F=EEAN4_F)
 ```
 
 #P33_G
 
 ```{r}
-base<-rename(base, P33_G=HH7)
+base<-rename(base, P33_G=EEAN4_G)
 ```
 
 #P33_H
 
 ```{r}
-base<-rename(base, P33_H=HH8)
+base<-rename(base, P33_H=EEAN4_H)
 ```
 
 #P34
 
 ```{r}
-base[, 94]<-ifelse(base[, 94]=="Y", 1, 0)
-base<-base%>%
-    rename(P34=II1)
-base<-select(base, -95)
+base$EEAN5<-recode(base$EEAN5, `9`=99, `2`=0)
+base<-rename(base, P34=EEAN5)
 ```
 
 #P35
 
 ```{r}
-base<-select(base, -c(95, 101))
-base[, 95]<-ifelse(base[, 95]=="Y", 16, 0)
-base[, 96]<-ifelse(base[, 96]=="Y", 8, 0)
-base[, 97]<-ifelse(base[, 97]=="Y", 4, 0)
-base[, 98]<-ifelse(base[, 98]=="Y", 2, 0)
-base[, 99]<-ifelse(base[, 99]=="Y", 1, 0)
+base[, 130]<-ifelse(base[, 130]==1, 32, 0)
+base[, 131]<-ifelse(base[, 131]==1, 16, 0)
+base[, 132]<-ifelse(base[, 132]==1, 8, 0)
+base[, 133]<-ifelse(base[, 133]==1, 4, 0)
+base[, 134]<-ifelse(base[, 134]==1, 2, 0)
+base[, 135]<-ifelse(base[, 135]==1, 1, 0)
 
 base<-base%>%
-    mutate(P35=apply(base[, 95:99], 1, sum))
+    mutate(P35=apply(base[ , 130:135], 1, sum))
 
-sort(unique(base$P35))
-
-base$P35<-recode(base$P35, `0`=99, `2`=1, `8`=2, `9`=3, `10`=4, `13`=5, `15`=6, `16`=7, `17`=8, `25`=9)
+base$P35<-recode(base$P35, `1`=10, `4`=11, `8`=2, `9`=3, `10`=4, `11`=12, `12`=13, `15`=6, `22`=14, `26`=15, `37`=16, `38`=17, `41`=18, `44`=19, `56`=20, `57`=21, `60`=22)
 
 base<-base%>%
-    select(-c(95:99))
+    select(-c(130:136))
 ```
-
 
 #P35_1
 
 ```{r}
-base<-rename(base, P35_1=JJJ)
+base<-rename(base, P35_1=EEAN6_G1)
 ```
 
 #P36
 
 ```{r}
-base<-rename(base, P36=KK)
+base<-rename(base, P36=EEAN7)
 ```
 
 #P37
 
 ```{r}
-base<-rename(base, P37=LL)
+base<-rename(base, P37=EEAN8)
 ```
 
 #Detalles finales
 
 ```{r}
 base<-rename(base, P1=nombre, P2=carrera)
-base<-select(base, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10_A, P10_A, P10_B, P10_C, P10_D, P10_E, P10_F, P10_G, P10_H, P10_I, P10_J, P11, P12, P13_A, P13_B, P13_C, P13_D, P13_E, P14, P15, P16, P17, P18_A, P18_B, P18_C, P18_D, P18_E, P18_F, P19_A, P19_B, P19_C, P19_D, P19_E, P19_F, P20, P21_A1, P21_A2, P21_A3, P21_A4, P21_A5, P21_B1, P21_B2, P21_B3, P21_B4, P21_B5, P21_C1, P21_C2, P21_C3, P21_C4, P21_C5, P21_D1, P21_D2, P21_D3, P21_D4, P21_D5, P22, P23, P24, P24_1, P25, P25_1, P26, P26_1, P27_A, P27_B, P27_C, P27_D, P27_E, P27_F, P27_G, P27_H, P28_A, P28_B, P28_C, P28_D, P28_E, P28_F, P28_G, P29, P30, P31, P31_1, P32, P33_A, P33_B, P33_C, P33_D, P33_E, P33_F, P33_G, P33_H, P34, P35, P35_1, P36, P37)
-base<-base[-c(139:141), ]
+base<-select(base, P1, P2, P3, P4, P5, P6, P7, P8, P9, P10_A1, P10_A2, P10_B1, P10_B2, P10_C1, P10_C2, P10_D1, P10_D2, P10_E1, P10_E2, P10_F1, P10_F2, P10_G1, P10_G2, P10_H1, P10_H2, P10_I1, P10_I2, P10_J1, P10_J2, P11, P12, P13_A, P13_B, P13_C, P13_D, P13_E, P14, P15, P16, P17, P18_A, P18_B, P18_C, P18_D, P18_E, P18_F, P19_A, P19_B, P19_C, P19_D, P19_E, P19_F, P20, P21_A1, P21_A2, P21_A3, P21_A4, P21_A5, P21_A6, P21_A7, P21_A8, P21_A9, P21_B1, P21_B2, P21_B3, P21_B4, P21_B5, P21_B6, P21_B7, P21_B8, P21_B9, P21_C1, P21_C2, P21_C3, P21_C4, P21_C5, P21_C6, P21_C7, P21_C8, P21_C9, P21_D1, P21_D2, P21_D3, P21_D4, P21_D5, P21_D6, P21_D7, P21_D8, P21_D9, P21_E1, P21_E2, P21_E3, P21_E4, P21_E5, P21_E6, P21_E7, P21_E8, P21_E9, P22, P23, P24, P24_1, P25, P25_1, P26, P26_1, P27_A, P27_B, P27_C, P27_D, P27_E, P27_F, P27_G, P27_H, P28_A, P28_B, P28_C, P28_D, P28_E, P28_F, P28_G, P29, P30, P31, P31_1, P32, P33_A, P33_B, P33_C, P33_D, P33_E, P33_F, P33_G, P33_H, P34, P35, P35_1, P36, P37)
 base
 ```
 
 ```{r}
-write.csv(base, file="estudiantes.csv")
+write.csv(base, file="estudiantes2.csv")
 ```
 
