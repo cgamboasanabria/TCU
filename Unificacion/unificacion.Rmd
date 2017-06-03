@@ -1,0 +1,95 @@
+```{r}
+library(sjmisc)
+library(plyr)
+library(dplyr)
+library(tidyr)
+library(data.table)
+base1<-tbl_df(read_spss("J:/Academico/Proyectos/GitHub/TCU/Unificacion/estudiantes.sav"))
+base2<-tbl_df(read_spss("J:/Academico/Proyectos/GitHub/TCU/Unificacion/estudiantes2.sav"))
+names(base2)<-c(names(base2)[2:140], "PR")
+base1<-select(base1, -P10_A)
+base2<-select(base2, -P10_A1)
+```
+```{r}
+names(base1)[10:19]<-paste("P10_", LETTERS[1:10], sep="")
+
+noms<-function(x){
+    c(paste(x, 1, sep=""),paste(x, 2, sep=""))
+}
+
+fsep<-function(data){
+    l<-list()
+    for(i in 1:dim(data)[2]){
+        l[[i]]<-separate_(data, colnames(data)[i], into=noms(colnames(data)[i]), sep="¬", remove=TRUE)
+        l[[i]]<-select_(l[[i]], noms(colnames(data)[i])[1], noms(colnames(data)[i])[2])
+    }
+    l
+}
+
+p<-apply(base1[, 10:19], 2, function(x){
+    ifelse(x%in%c("0", "1")==TRUE, paste(x, "¬", sep=""), paste("¬", x, sep=""))})%>%
+    data.frame()%>%
+    fsep()%>%
+    lapply(mutate, In=1:138)%>%
+    join_all(by="In", type="full")%>%
+    select(-In)%>%
+    apply(2, function(x){ifelse(nchar(x)=="0", NA, x)})%>%
+    data.frame()
+
+p[,c(seq(2,18,2))]<-p[,c(seq(2,18,2))]%>%
+    apply(2, function(x){gsub("_", "", x)})%>%
+    apply(2, function(x){gsub("[.]", "", x)})%>%
+    apply(2, function(x){gsub(",", "", x)})%>%
+    data.frame()%>%
+    mutate_all(as.character)
+    
+for(i in seq(2,18,2)){
+    for(j in 1:138){
+        ifelse(nchar(as.character(p[j,i]))<4,p[j,i]<-NA, p[j,i])
+    }
+}
+
+for(i in seq(2,18,2)){
+    for(j in 1:138){
+        ifelse(is.na(p[j,i])==FALSE,p[j,i-1]<-1,p[j,i-1])
+    }
+}
+
+base1<-data.frame(base1, p)%>%
+    select(P1:P9, P10_A1:P10_J2, P12:V105, -c(P10_A:P10_J))
+```
+
+```{r}
+base1
+```
+
+```{r}
+names(base2)[10:29]<-sort(noms(rep(paste("P10_", LETTERS[1:10], sep=""))))
+for(i in seq(11, 29, 2)){
+    for(j in 1:304){
+        ifelse(nchar(as.character(base2[j,i]))<4,base2[j,i]<-NA, base2[j,i])
+    }
+}
+for(i in seq(11, 29, 2)){
+    for(j in 1:304){
+        ifelse(is.na(base2[j,i])==FALSE,base2[j,i-1]<-1,base2[j,i-1])
+    }
+}
+base2
+```
+
+```{r}
+repl<-function(x){
+    num<-unique(as.numeric(gsub("\\D", "", x))-1)
+    for(i in 1:length(num)){
+        x<-gsub(paste(num[i]+1), num[i], x)
+    }
+    x
+}
+
+base1<-rename(base1, P11=P12)
+base2<-rename(base2, P11=P12)
+cbind(names(base1), names(base2))
+```
+
+
