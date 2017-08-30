@@ -1,0 +1,421 @@
+---
+title: "Instrumento aplicado a Estudiantes - Segundo avance"
+author: "César Gamboa Sanabria - Stefany Matarrita Muñoz"
+date: "18 de julio de 2017"
+output: pdf_document
+header-includes:
+    - \usepackage{caption}
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = F, cache = T)
+Sys.setenv(LANG = "es")
+```
+```{r}
+library(dplyr)
+library(xtable)
+load("J:/Academico/Proyectos/GitHub/TCU/Unificacion/Estudiantes.RData")
+```
+
+```{r}
+base$P2<-recode(base$P2, ` 6`="Bachillerato Dirección", 
+                 ` 2`="Bachillerato Contaduría Pública",
+                 ` 4`="Licenciatura Dirección", 
+                 ` 9`="Bachillerato y licenciatura Dirección", 
+                 ` 1`="Licenciatura Contaduría Pública", 
+                 ` 3`="Bachillerato y Licenciatura Contaduría Pública",
+                 ` 5`="Otros", ` 8`="Otros", `11`="Otros", 
+                 `10`="Otros", `12`="Otros", 
+                 ` 7`="Otros", `13`="Otros", `99`="NS/NR")
+```
+
+```{r}
+base$P4<-recode(base$P4, ` 1`="Muy importante", ` 2`="Importante", 
+                ` 3`="Importante y muy importante",
+                ` 4`="Poco importante", `99`="NS/NR")
+```
+
+```{r}
+f<-function(filas, columnas, excluir=NULL, k){
+    m<-as.matrix(round(prop.table(table(filas,
+                                        columnas, 
+                                        exclude=excluir))*100, 
+                       k))
+    m<-m[order(rownames(m)),]
+    m<-rbind(m, colSums(m))
+    m<-cbind(m, rowSums(m))
+    colnames(m)[length(colnames(m))]<-"Total"
+    rownames(m)[length(rownames(m))]<-"Total"
+    m
+}
+```
+
+```{r}
+n<-f(base$P2, base$P4, c("Importante y muy importante", "NS/NR"), 1)
+```
+
+\captionsetup[table]{labelformat=empty}
+`r xtable::xtable(n, digits=1, caption='Pregunta 4: ¿Qué importancia le otorga al tema de la ética en la Administración de Negocios?')`
+
+El 75.8% de los entrevistados indicó que el tema de la ética es un aspecto muy importante y de este porcentaje, el 30.2% pertenecen al bachillerato en Dirección de Empresas y el 15.3% a Contaduría Pública, mientras que del 22.6% que opinaron que era importante, el 10.4% pertenecen al bachillerato en Dirección de Empresas. Solamente un 1.6% consideraron que era algo poco importante.     
+
+##Sobre la ética en la Administración de Negocios.        
+
+```{r}
+base$P5<-recode(base$P5, ` 0`="No", ` 1`="Si", `0`="No", `1`="Si", `99`="NS/NR")
+n<-f(base$P2, base$P5, c("Importante y muy importante", "NS/NR"), 1)
+```
+
+\captionsetup[table]{labelformat=empty}
+`r xtable::xtable(n, digits=1, caption='Pregunta 5: En los cursos del plan de estudios de su carrera ¿ha recibido algún tipo de formación ética?')`
+
+El 77.1% de los entrevistados afirmaron haber recibido algún tipo de formación ética, mientras que un 22.9% afirman no haberla recibido y de éste porcentaje más del 50% pertenecen a los estudiantes de bachillerato.       
+
+```{r, eval=FALSE}
+library(tm)
+library(stringi)
+library(stringr)
+library(tidytext)
+stopwords<-stopwords("es")
+stopwords<-c(stopwords,"por","que","x","xq")
+stopwords<-stri_trans_general(stopwords,"Latin-ASCII")
+
+limpiar=function(texto){
+  # Eliminar los links
+  texto <- str_replace_all(texto,"(f|ht)(tp)(s?)(://)(.*)[.|/](.*)", " ")
+  # Elimina la referencia a un retuit
+  texto <- str_replace_all(texto,"(RT|via)((?:\\b\\W*@\\w+)+)", " ")
+  # Elimina los #hashtag
+  texto <- str_replace_all(texto,"#\\w+", " ")
+  # Elimina los signos de puntuación
+  texto <- str_replace_all(texto,"[[:punct:]]", " ")
+  #Elimina tildes
+  texto<-stri_trans_general(texto,"Latin-ASCII")
+  # Elimina los números
+  texto <- str_replace_all(texto,"[[:digit:]]", " ")
+  # Elimina espacios innecesarios
+  texto <- str_replace_all(texto,"[ \t]{2,}", " ")
+  texto <- str_replace_all(texto,"^\\s+|\\s+$", "")
+  texto <- str_replace_all(texto,"\\n", "")
+  #Remueve emoticones y tildes
+  texto=iconv(from = "latin1", to = "ASCII", sub="",texto)
+  
+  #Remueve stopwords
+  texto=tolower(as.character(texto))
+  texto=removeWords(texto,stopwords)
+  texto
+}
+```
+
+
+```{r}
+base$P7<-recode(base$P7, ` 1`="Mucho", ` 2`="Lo necesario", ` 3`="Poco", ` 4`="Nada",
+                `99`="NS/NR")
+n<-f(base$P2, base$P7, c("NS/NR"," 5"), 2)
+```
+
+\captionsetup[table]{labelformat=empty}
+`r xtable::xtable(n, digits=1, caption='Pregunta 7: Los profesores de la carrera de Dirección de Empresas o de Contaduría Pública, según sea el caso, ¿se han preocupado por relacionar la materia del curso que imparten con la ética profesional?')`
+
+El 57.4% de los entrevistados indicaron que los profesores solo se preocupan lo necesario por relacionar la materia del curso que imparten con la ética profesional mientras que el 25.4% indican que hay poca preocupación por parte de los profesores, ésta percepción es más alta entre los estudiantes de Dirección de empresas, tanto de bachillerato como de licenciatura.
+
+```{r}
+base$P8<-recode(base$P8, ` 1`="Mucho", ` 2`="Lo necesario", ` 3`="Poco", ` 5`="Nada",
+                `99`="NS/NR", `1`="Mucho", `2`="Lo necesario", `3`="Poco", `5`="Nada")
+n<-f(base$P2, base$P7, c("NS/NR", " 4", "4"," 5"), 2)
+```
+
+\captionsetup[table]{labelformat=empty}
+`r xtable::xtable(n, digits=1, caption='Pregunta 8: Los docentes que tiene en su carrera ¿le ofrecen consejos y orientación sobre temas éticos?')`
+
+La mayoría de entrevistados consideran que los profesores ofrecen pocos consejos o solamente los necesarios sobre temas éticos. Esta percepción se da principalmente a nivel de bachillerato.
+
+```{r}
+base$P9<-recode(base$P9, `1`="Mucho", `2`="Lo necesario", `3`="Poco", `5`="Nada", `99`="NS/NR")
+n<-f(base$P2, base$P9, c("NS/NR", " 4", "4"," 5"), 2)
+```
+
+\captionsetup[table]{labelformat=empty}
+`r xtable::xtable(n, digits=1, caption='Pregunta 9: Los docentes que tiene en su carrera ¿trabajan en sus lecciones casos prácticos sobre problemas éticos del ámbito empresarial y/o nacional?')`
+
+El 78% de los entrevistados consideran que los docentes trabajan solo lo necesario, o poco, casos prácticos sobre problemas éticos en el ámbito empresarial y/o nacional.       
+
+```{r}
+base$P11<-recode(base$P11, `1`="Sí", `0`="No")
+n<-f(base$P2, base$P11, c("NS/NR", " 4", "4"," 5"), 1)
+```
+
+\captionsetup[table]{labelformat=empty}
+`r xtable::xtable(n, digits=1, caption='Pregunta 11: ¿Debe la formación ética ser parte del desarrollo profesional dentro de la Administración de Negocios?')`
+
+El 97.5% de los entrevistados coinciden en que la formación ética debe ser parte del desarrollo profesional dentro ed la Administración de Negocios.       
+
+```{r}
+base$P14<-recode(base$P14, `1`="Sí", `0`="No", ` 1`="Sí", ` 0`="No", `99`="NS/NR")
+n<-f(base$P2, base$P14, c("NS/NR"), 3)
+```
+
+\captionsetup[table]{labelformat=empty}
+`r xtable::xtable(n, digits=1, caption='Pregunta 14: En su desempeño estudiantil ¿Se ha enfrentado a situaciones relacionadas con el téma de la ética?')`
+
+El 60.4% de los entrevistados consideran que nunca han enfrentado situaciones relacionadas con el tema de la ética, esto principalmente a nivel de bachillerato.       
+
+```{r}
+base$P16<-recode(base$P16, `1`="Sí", `0`="No", `99`="NS/NR")
+n<-f(base$P2, base$P16, c("NS/NR"), 3)
+```
+
+\captionsetup[table]{labelformat=empty}
+`r xtable::xtable(n, digits=1, caption='Pregunta 16: ¿Participa en algún proyecto o iniciativa que contribuya al fomento de la ética y la responsabilidad social empresarial?')`
+
+Casi el 90% de los entrevistados afirma que no participa en ningún proyecto o iniciativa que contribuya al fomento de la ética, principalmente en la carrera de Dirección de Empresas y al nivel de bachillerato en contaduría pública.
+
+```{r}
+base$P20<-recode(base$P20, `1`="Sí", `0`="No", ` 1`="Sí", ` 0`="No", `99`="NS/NR")
+n<-f(base$P2, base$P20, c("NS/NR"), 6)
+```
+
+\captionsetup[table]{labelformat=empty}
+`r xtable::xtable(n, digits=1, caption='Pregunta 20: ¿Ha recibido algún curso o formación en el ámbito de la ética?')`
+
+El 87% de los estudiantes afirma que no ha recibido ningún curso de formación ética, esto incluso a nivel de licenciatura.        
+
+```{r}
+base$P22<-recode(base$P22, `1`="Sí", `0`="No", ` 1`="Sí", ` 0`="No", `99`="NS/NR")
+n<-f(base$P2, base$P22, c("NS/NR"), 1)
+```
+
+\captionsetup[table]{labelformat=empty}
+`r xtable::xtable(n, digits=1, caption='Pregunta 22: Estaría de acuerdo en participar en algún curso o actividad que le permita enriquecer su formación sobre el tema de la ética profesional en las organizaciones?')`
+
+El 84% de los estudiantes estaría dispuesto a participar en actividades relacionadas a la ética, principalmente a nivel de bachillerato.        
+
+```{r, eval=FALSE}
+###24) ¿Bajo qué modalidad le gustaría recibir este tipo de formación sobre el tema de la ética profesional?        
+base$P24<-recode(base$P24, ` 4`="Taller y otro", `4`="Taller y otro", `11`="Seminario y taller", 
+                 ` 5`="Taller y conferencia", `5`="Taller y conferencia", 
+                 ` 8`="Seminario y otro", `8`="Seminario y otro", ` 8`="Seminario y otro", ` 3`="Taller", 
+                 `15`="Curso y taller", `22`="Conferencia y otro", 
+                 `17`="Curso y seminario", `9`="Seminario y conferencia", 
+                 `99`="NS/NR", ` 2`="Conferencia", 
+                 `23`="Curso y otro", `13`="Curso", `14`="Curso y conferencia", 
+                 `7`="Seminario", ` 7`="Seminario", ` 9`="Seminario y conferencia", 
+                 `12`="Seminario, taller y conferencia", `20`="Otras combinaciones", 
+                 `19`="Otras combinaciones", ` 1`="Otras combinaciones", 
+                 ` 6`="Otras combinaciones", `10`="Otras combinaciones", `16`="Otras combinaciones",
+                 `18`="Otras combinaciones", `21`="Otras combinaciones")
+modalidad<-unlist(lapply(strsplit(gsub(",", "y", base$P24), "y"), function(x){tolower(trimws(x))}))
+
+modalidad<-modalidad[grep("conferencia|curso|seminario|taller", modalidad)]
+
+data<-data.frame(table(modalidad))
+lbs<-paste(data$modalidad, paste("(", round(prop.table(table(modalidad))*100, 2), "%", ")", sep = ""))
+library(plotrix)
+pie3D(data$Freq, labels = lbs, main = "¿Bajo qué modalidad le gustaría recibir este\ntipo de formación sobre el tema de la ética profesional?  ", explode=0.1, radius=.9, labelcex = 1,  start=0.7, labelpos=c(1.3,2.57,4.1,5.3))
+```
+
+La mayor parte de los entrevistados preferiría recibir un taller sobre ética, mientras que la opción menos predilecta es recibir todo un curso.        
+
+```{r, eval=FALSE}
+###24.1) ¿En qué horario le gustaría recibir este tipo de formación sobre el tema de la ética profesional?
+
+sort(round(prop.table(table(base$P24.1, exclude="NA"))*100, 2))
+
+base$P24.1<-recode(base$P24.1, ` 1`="otro", ` 2`="vespertino", `2`="vespertino",` 3`="vespertino y otro",
+                   `3`="vespertino y otro",
+                   ` 4`="matutino", ` 5`="matutino y vespertino", `5`="matutino y vespertino",` 6`="sabado", 
+                   ` 7`="sabado y vespertino", `7`="sabado y vespertino",
+                   ` 8`="sabado y matutino", `8`="sabado y matutino",` 9`="durante la semana", 
+                   `9`="durante la semana",
+                   `10`="durante la semana y vespertino", `11`="durante la semana y matutino", 
+                   `12`="durante la semana y matutino y vespertino", `13`="durante la semana y sabado", 
+                   `14`="durante la semana y sabado y otro", `15`="durante la semana y sabado y vespertino", 
+                   `16`="durante la semana y sabado y matutino y vespertino", `17`="matutino y otro", 
+                   `18`="sabado y otro", `19`="todos los horarios y otro", `99`="NA")
+horario<-unlist(lapply(strsplit(gsub(",", "y", base$P24.1), "y"), function(x){tolower(trimws(x))}))
+
+horario<-horario[grep("durante la semana|matutino|vespertino|sabado|otro|todos los horario", horario)]
+
+data<-data.frame(table(horario))
+lbs<-paste(data$horario, paste("(", round(prop.table(table(horario))*100, 2), "%", ")", sep = ""))
+library(plotrix)
+pie3D(data$Freq, labels = lbs, main = "¿En qué horario le gustaría recibir este tipo de formación sobre el tema de la ética profesional?", explode=0.1, radius=.9, labelcex = 1,  start=0.7)
+```
+
+```{r}
+base$P25<-recode(base$P25, 
+                 ` 1`="Estudios de casos vinculados a la ética",
+                 ` 2`="Modelos de aprendizaje ético dentro de la Administración de Negocios",
+                 ` 3`="Modelos de aprendizaje ético dentro de la Administración de Negocios & Estudios de casos vinculados a la ética",
+                 ` 4`="Ética y deontología (ciencia de los deberes) dentro de la Administración de Negocios
+& Estudios de casos vinculados a la ética",
+` 5`="Ética y deontología (ciencia de los deberes) dentro de la Administración de Negocios, Modelos de aprendizaje ético dentro de la Administración de Negocios & Estudios de casos vinculados a la ética", 
+`5`="Ética y deontología (ciencia de los deberes) dentro de la Administración de Negocios, Modelos de aprendizaje ético dentro de la Administración de Negocios & Estudios de casos vinculados a la ética",
+`6`="Estrategias para trabajar la ética aplicada a la Administración de Negocios",
+` 6`="Estrategias para trabajar la ética aplicada a la Administración de Negocios",
+`7`="Estrategias para trabajar la ética aplicada a la Administración de Negocios & Estudios de casos vinculados a la ética", 
+` 7`="Estrategias para trabajar la ética aplicada a la Administración de Negocios & Estudios de casos vinculados a la ética",
+` 8`="Estrategias para trabajar la ética aplicada a la Administración de Negocios & Modelos de aprendizaje ético dentro de la Administración de Negocios",
+` 9`="Estrategias para trabajar la ética aplicada a la Administración de Negocios, Modelos de aprendizaje ético dentro de la Administración de Negocios & Estudios de casos vinculados a la ética", 
+`9`="Estrategias para trabajar la ética aplicada a la Administración de Negocios, Modelos de aprendizaje ético dentro de la Administración de Negocios & Estudios de casos vinculados a la ética",
+`10`="Estrategias para trabajar la ética aplicada a la Administración de Negocios, & Ética y deontología (ciencia de los deberes) dentro de la Administración de Negocios", 
+`11`="Estrategias para trabajar la ética aplicada a la Administración de Negocios, & Ética y deontología (ciencia de los deberes) dentro de la Administración de Negocios & Otro (s)",
+`12`="Estrategias para trabajar la ética aplicada a la Administración de Negocios, Ética y deontología (ciencia de los deberes) dentro de la Administración de Negocios & Estudios de casos vinculados a la ética",
+`13`="Estrategias para trabajar la ética aplicada a la Administración de Negocios, Ética y deontología (ciencia de los deberes) dentro de la Administración de Negocios & Modelos de aprendizaje ético dentro de la Administración de Negocios",
+`14`="Estrategias para trabajar la ética aplicada a la Administración de Negocios,  Ética y deontología (ciencia de los deberes) dentro de la Administración de Negocios,  Modelos de aprendizaje ético dentro de la Administración de Negocios & Otro (s)",
+`15`="Estrategias para trabajar la ética aplicada a la Administración de Negocios, Ética y deontología (ciencia de los deberes) dentro de la Administración de Negocios, Modelos de aprendizaje ético dentro de la Administración de Negocios & Estudios de casos vinculados a la ética",
+`16`="Importancia de la ética dentro de la Administración de Negocios",
+`17`="Importancia de la ética dentro de la Administración de Negocios & Otro (s)",
+`18`="Importancia de la ética dentro de la Administración de Negocios & Estudios de casos vinculados a la ética",
+`19`="Importancia de la ética dentro de la Administración de Negocios,  Modelos de aprendizaje ético dentro de la Administración de Negocios & Estudios de casos vinculados a la ética",
+`20`="Importancia de la ética dentro de la Administración de Negocios & Ética y deontología (ciencia de los deberes) dentro de la Administración de Negocios",
+`21`="Importancia de la ética dentro de la Administración de Negocios,  Ética y deontología (ciencia de los deberes) dentro de la Administración de Negocios & Estudios de casos vinculados a la ética",
+`22`="Importancia de la ética dentro de la Administración de Negocios,  Ética y deontología (ciencia de los deberes) dentro de la Administración de Negocios & Modelos de aprendizaje ético dentro de la Administración de Negocios",
+`23`="Importancia de la ética dentro de la Administración de Negocios & Estrategias para trabajar la ética aplicada a la Administración de Negocios",
+`24`="Importancia de la ética dentro de la Administración de Negocios,  Estrategias para trabajar la ética aplicada a la Administración de Negocios & Estudios de casos vinculados a la ética",
+`25`="Importancia de la ética dentro de la Administración de Negocios,  Estrategias para trabajar la ética aplicada a la Administración de Negocios & Modelos de aprendizaje ético dentro de la Administración de Negocios",
+`26`="Importancia de la ética dentro de la Administración de Negocios,  Estrategias para trabajar la ética aplicada a la Administración de Negocios & Ética y deontología (ciencia de los deberes) dentro de la Administración de Negocios",
+`27`="Importancia de la ética dentro de la Administración de Negocios,  Estrategias para trabajar la ética aplicada a la Administración de Negocios , Ética y deontología (ciencia de los deberes) dentro de la Administración de Negocios & Estudios de casos vinculados a la ética",
+`28`="Importancia de la ética dentro de la Administración de Negocios,  Estrategias para trabajar la ética aplicada a la Administración de Negocios , Ética y deontología (ciencia de los deberes) dentro de la Administración de Negocios & Modelos de aprendizaje ético dentro de la Administración de Negocios",
+`29`="Importancia de la ética dentro de la Administración de Negocios,  Estrategias para trabajar la ética aplicada a la Administración de Negocios , Ética y deontología (ciencia de los deberes) dentro de la Administración de Negocios, Modelos de aprendizaje ético dentro de la Administración de Negocios & Estudios de casos vinculados a la ética", `99`="NA")
+
+temas<-unlist(lapply(strsplit(gsub(",", "&", base$P25[-grep("[0-9]", base$P25)]), "&"), function(x){tolower(trimws(x))}))
+
+temas<-ifelse(temas=="", "na", temas)
+temas<-temas[-grep("na|otro (s)", temas)]
+
+
+n<-as.matrix(round(prop.table(table(temas))*100, 2))
+n<-as.matrix(n[order(n[,1], decreasing=TRUE),])
+colnames(n)<-"Porcentaje"
+```
+
+\captionsetup[table]{labelformat=empty}
+`r xtable::xtable(n, digits=1, caption='Pregunta 25: ¿Cuál(es) de los siguientes temas le interesaría que se analicen en estas actividades formativas vinculadas a la ética en el desempeño profesional de la Administración de Negocios?')`
+
+Los porcentajes sobre los temas que resultarían interesantes son bastante parecjo, pero el más seleccionado es el de estrategias para trabajar la ética aplicada a la administración de negocios.     
+
+```{r}
+base$P26<-recode(base$P26, `99`="NS/NR",
+                 ` 1`="Otra",
+                 ` 2`="Es una forma de vida sustentada en la vivencia de los valores humanos y profesionales para buscar la justicia y la felicidad",
+                 ` 3`="Es una filosofía de vida para saber actuar y diferenciar lo que se permite y lo que no se permite en la búsqueda del bien común",
+                 ` 4`="Es una filosofía de vida para saber actuar y diferenciar lo que se permite y lo que no se permite en la búsqueda del bien común
+ & Es una forma de vida sustentada en la vivencia de los valores humanos y profesionales para buscar la justicia y la felicidad",
+                 ` 5`="Es una guía para orientar el desempeño personal y profesional en temas controversiales",
+                 ` 6`="Es una guía para orientar el desempeño personal y profesional en temas controversiales & Es una filosofía de vida para saber actuar y diferenciar lo que se permite y lo que no se permite en la búsqueda del bien común", 
+                 ` 7`="Es una teoría filosófica que se relaciona con la moral, las buenas costumbres",
+                 ` 8`="Es una teoría filosófica que se relaciona con la moral, las buenas costumbres & Otra",
+                 ` 9`="Es una teoría filosófica que se relaciona con la moral, las buenas costumbres & Es una filosofía de vida para saber actuar y diferenciar lo que se permite y lo que no se permite en la búsqueda del bien común", 
+                 `10`="Es una teoría filosófica que se relaciona con la moral, las buenas costumbres, es una filosofía de vida para saber actuar y diferenciar lo que se permite y lo que no se permite en la búsqueda del bien común & Es una forma de vida sustentada en la vivencia de los valores humanos y profesionales para buscar la justicia y la felicidad", 
+                 `11`="Es una teoría filosófica que se relaciona con la moral, las buenas costumbres & Es una guía para orientar el desempeño personal y profesional en temas controversiales", 
+                 `12`="Es una teoría filosófica que se relaciona con la moral, las buenas costumbres, es una guía para orientar el desempeño personal y profesional en temas controversiales, es una filosofía de vida para saber actuar y diferenciar lo que se permite y lo que no se permite en la búsqueda del bien común & es una forma de vida sustentada en la vivencia de los valores humanos y profesionales para buscar la justicia y la felicidad")
+
+entiende<-unlist(lapply(strsplit(gsub(",", "&", base$P26), "&"), function(x){tolower(trimws(x))}))
+
+entiende<-entiende[-grep("ns/nr", entiende)]
+
+
+n<-as.matrix(round(prop.table(table(entiende))*100, 2))
+n<-as.matrix(n[order(n[,1], decreasing=TRUE),])
+colnames(n)<-"Porcentaje"
+```
+
+\captionsetup[table]{labelformat=empty}
+`r xtable::xtable(n, digits=1, caption='Pregunta 26: Desde su perspectiva ¿qué entiende por ética dentro del ejercicio profesional en el ámbito de la Administración de Negocios?')`     
+
+Casi la mitad de los entrevistados (44.06%) entiende por ética dentro del ejercicio profesional en el ámbito de la Administración de Negocios como una filosofía de vida para saber actuar y diferenciar lo que se permite y lo que no se permite en la búsqueda del bien común.       
+
+```{r}
+base$P30<-recode(base$P30, `1`="Sí", `0`="No", ` 1`="Sí", ` 0`="No", `99`="NS/NR")
+n<-f(base$P2, base$P30, c("NS/NR"), 4)
+```
+
+\captionsetup[table]{labelformat=empty}
+`r xtable::xtable(n, digits=1, caption='Pregunta 30: ¿Conoce si la EAN-UCR tiene un eje transversal acerca de la ética y valores?')`
+
+El 76% de los entrevistados desconoce el eje transversal acerca de la ética y valores de la EAN-UCR.        
+
+```{r}
+base$P31<-recode(base$P31, 
+                 `99`="NS/NR",
+                 ` 1`="Otro medio(s)", 
+                 `1`="Otro medio(s)",
+                 ` 2`="Algún(a) funcionario(a) de la EAN-UCR",
+                 `2`="Algún(a) funcionario(a) de la EAN-UCR",
+                 ` 3`="Algún(a) funcionario(a) de la EAN-UCR & Otro medio(s)",
+                 ` 4`="Información en alguna actividad (foro, taller, conversatorio…) de la EAN-UCR",
+                 `4`="Información en alguna actividad (foro, taller, conversatorio…) de la EAN-UCR",
+                 ` 5`="Información en alguna actividad (foro, taller, conversatorio…) de la EAN-UCR & Algún(a) funcionario(a) de la EAN-UCR",
+                 ` 6`="Documentación impresa de la EAN-UCR",
+                 `6`="Documentación impresa de la EAN-UCR",
+                 ` 7`="Documentación impresa de la EAN-UCR & Otro medio(s)",
+                 ` 8`="Documentación impresa de la EAN-UCR & Algún(a) funcionario(a) de la EAN-UCR",
+                 ` 9`="Portal Web de la EAN-UCR",
+                 `9`="Portal Web de la EAN-UCR",
+                 `10`="Portal Web de la EAN-UCR & Algún(a) funcionario(a) de la EAN-UCR",
+                 `11`="Portal Web de la EAN-UCR & Información en alguna actividad (foro, taller, conversatorio…) de la EAN-UCR",
+                 `12`="Portal Web de la EAN-UCR & Documentación impresa de la EAN-UCR")
+
+medio<-unlist(lapply(strsplit(as.character(base$P31[-grep("[0-9]", base$P31)]), "&"), function(x){tolower(trimws(x))}))
+
+medio<-medio[-grep("na|ns/nr", medio)]
+
+
+n<-as.matrix(round(prop.table(table(medio))*100, 2))
+n<-as.matrix(n[order(n[,1], decreasing=TRUE),])
+colnames(n)<-"Porcentaje"
+```
+
+\captionsetup[table]{labelformat=empty}
+`r xtable::xtable(n, digits=1, caption='Pregunta 31: ¿Mediante qué medio tuvo conocimiento de la presencia de ese eje transversal de ética y valores?')`     
+
+El 84.94% de los entrevistados conocían el eje transversal lo hicieron por medio de documentación impresa de la EAN-UCR o por medio del sitio web.      
+
+```{r}
+base$P32<-recode(base$P32, `1`="Sí", `0`="No", ` 1`="Sí", ` 0`="No", `99`="NS/NR")
+n<-f(base$P2, base$P32, c("NS/NR", "NA"), 4)
+```
+
+\captionsetup[table]{labelformat=empty}
+`r xtable::xtable(n, digits=1, caption='Pregunta 32: ¿Conoce los valores que tiene la EAN-UCR?')`       
+
+Más del 80% de los entrevistados dijo no conocer los valores que tiene la EAN-UCR.      
+
+```{r}
+base$P34<-recode(base$P34, `1`="Sí", `0`="No", ` 1`="Sí", ` 0`="No", `99`="NS/NR")
+n<-f(base$P2, base$P34, c("NS/NR", "NA"), 4)
+```
+
+\captionsetup[table]{labelformat=empty}
+`r xtable::xtable(n, digits=1, caption='Pregunta 34: ¿Actualmente la EAN_UCR utiliza estrategias para favorecer la vivencia de los valores que sustenta ¿Tiene conocimiento de dichas estrategias?')`     
+
+Más del 90% de los entrevistados desconoce las estrategias empleadas por la EAN-UCR para favorecer la vivencia de los valores.      
+
+```{r}
+base$P35<-recode(base$P35, `99`="NS/NR",
+                 `1`="Comunicados de la EAN-UCR para promover la vivencia de la ética en el ámbito personal, académico y laboral",
+                 `2`="Desarrollo de proyectos o iniciativas que promuevan la Responsabilidad Social Empresarial (ej. TCU, proyectos sociales)",
+                 `3`="Desarrollo de proyectos o iniciativas que promuevan la Responsabilidad Social Empresarial (ej. TCU, proyectos sociales) & Inclusión del eje transversal de ética y valores dentro de los programas de los cursos",
+                 `4`="Desarrollo de proyectos o iniciativas que promuevan la Responsabilidad Social Empresarial (ej. TCU, proyectos sociales) & Comunicados de la EAN-UCR para promover la vivencia de la ética en el ámbito personal, académico y laboral",
+                 `5`="Desarrollo de proyectos o iniciativas que promuevan la Responsabilidad Social Empresarial (ej. TCU, proyectos sociales) & Organización de actividades que se vinculan al tema de la ética y los valores & Inclusión del eje transversal de ética y valores dentro de los programas de los cursos",
+                 `6`="Desarrollo de proyectos o iniciativas que promuevan la Responsabilidad Social Empresarial (ej. TCU, proyectos sociales) & Organización de actividades que se vinculan al tema de la ética y los valores & Comunicados de la EAN-UCR para promover la vivencia de la ética en el ámbito personal & académico y laboral & Inclusión del eje transversal de ética y valores dentro de los programas de los cursos",
+                 `7`="Desarrollo de investigaciones sobre el tema de la ética",
+                 `8`="Desarrollo de investigaciones sobre el tema de la ética & Inclusión del eje transversal de ética y valores dentro de los programas de los cursos",
+                 `9`="Desarrollo de investigaciones sobre el tema de la ética & Desarrollo de proyectos o iniciativas que promuevan la Responsabilidad Social Empresarial (ej. TCU, proyectos sociales) & Inclusión del eje transversal de ética y valores dentro de los programas de los cursos")
+
+estrategia<-unlist(lapply(strsplit(as.character(base$P35[-grep("[0-9]", base$P35)]), "&"), function(x){tolower(trimws(x))}))
+
+estrategia<-estrategia[-grep("na|ns/nr", estrategia)]
+
+
+n<-as.matrix(round(prop.table(table(estrategia))*100, 2))
+n<-as.matrix(n[order(n[,1], decreasing=TRUE),])
+colnames(n)<-"Porcentaje"
+```
+
+\captionsetup[table]{labelformat=empty}
+`r xtable::xtable(n, digits=1, caption='Pregunta 31: ¿Qué estrategias utiliza la EAN-UCR para favorecer la vivencia de los valores que sustenta?')`  
+El 60 % de los entrevistados piensa que la EAN-UCR desarrolla proyectos o iniciativas que promuevan la responsabilidad social empresarial (ej. tcu, proyectos sociales) para favorecer la vivencia de los valores que sustenta.        
+
+
+

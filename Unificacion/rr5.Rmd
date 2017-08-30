@@ -1,0 +1,74 @@
+```{r}
+base
+```
+
+```{r}
+t(sort(round(prop.table(table(base$P2))*100, 2), decreasing=T))
+
+base$P2<-recode(base$P2, ` 6`="Bachillerato dirección", 
+                 ` 2`="Bachillerato negocios",
+                 ` 4`="Licenciatura Dirección", 
+                 ` 9`="Bachillerato y licenciatura dirección", 
+                 ` 1`="Licenciatura negocios", 
+                 ` 3`="Bachillerato y Licenciatura negocios",
+                 ` 5`="Otros", ` 8`="Otros", `11`="Otros", 
+                 `10`="Otros", `12`="Otros", 
+                 ` 7`="Otros", `13`="Otros", `99`="NS/NR")
+```
+
+#P4     
+
+```{r}
+base$P4<-recode(base$P4, ` 1`="Muy importante", ` 2`="Importante", 
+                ` 3`="Importante y muy importante",
+                ` 4`="Poco importante", `99`="NS/NR")
+```
+
+*   Porcentaje total      
+
+```{r}
+round(prop.table(table(base$P2,base$P4, exclude=c("Importante y muy importante", "NS/NR")))*100, 2)
+```
+
+*   Porcentaje por fila     
+
+```{r}
+round(prop.table(table(base$P2,base$P4, exclude=c("Importante y muy importante", "NS/NR")),1)*100, 2)
+```
+
+*   Porcentaje por columna      
+
+```{r}
+round(prop.table(table(base$P2,base$P4, exclude=c("Importante y muy importante", "NS/NR")), 2)*100, 2)
+```
+
+#P5        
+
+```{r}
+base$P5<-recode(base$P5, ` 0`="No", ` 1`="Si", `0`="No", `1`="Si", `99`="NS/NR")
+```
+
+*   Porcentaje total      
+
+```{r}
+round(prop.table(table(base$P2,base$P5, exclude=c("NS/NR")))*100, 2)
+```
+
+*   Porcentaje por fila     
+
+```{r}
+round(prop.table(table(base$P2,base$P5, exclude=c("NS/NR")),1)*100, 2)
+```
+
+*   Porcentaje por columna      
+
+```{r}
+round(prop.table(table(base$P2,base$P5, exclude=c("NS/NR")), 2)*100, 2)
+```
+
+#P7     
+
+```{r}
+levels(base$P7)
+```
+

@@ -4,8 +4,8 @@ library(plyr)
 library(dplyr)
 library(tidyr)
 library(data.table)
-base1<-tbl_df(read_spss("J:/Academico/Proyectos/GitHub/TCU/Unificacion/estudiantes.sav"))
-base2<-tbl_df(read_spss("J:/Academico/Proyectos/GitHub/TCU/Unificacion/estudiantes2.sav"))
+base1<-tbl_df(read_spss("E:/Academico/Proyectos/GitHub/TCU/Unificacion/estudiantes.sav"))
+base2<-tbl_df(read_spss("E:/Academico/Proyectos/GitHub/TCU/Unificacion/estudiantes2.sav"))
 names(base2)<-c(names(base2)[2:140], "PR")
 base1<-select(base1, -P10_A)
 base2<-select(base2, -P10_A1)
@@ -60,10 +60,6 @@ base1<-data.frame(base1, p)%>%
 ```
 
 ```{r}
-base1
-```
-
-```{r}
 names(base2)[10:29]<-sort(noms(rep(paste("P10_", LETTERS[1:10], sep=""))))
 for(i in seq(11, 29, 2)){
     for(j in 1:304){
@@ -75,8 +71,14 @@ for(i in seq(11, 29, 2)){
         ifelse(is.na(base2[j,i])==FALSE,base2[j,i-1]<-1,base2[j,i-1])
     }
 }
-base2
 ```
+
+```{r}
+base2%>%
+    select(P21_A6:P21_A9, P21_B6:P21_B9,P21_C6:P21_C9, P21_D6:P21_D9, P21_E1:P21_E9)%>%
+    apply(2, table)
+```
+
 
 ```{r}
 repl<-function(x){
@@ -89,7 +91,85 @@ repl<-function(x){
 
 base1<-rename(base1, P11=P12)
 base2<-rename(base2, P11=P12)
-cbind(names(base1), names(base2))
+
+base1<-rename(base1, P19.1=P20)
+base2<-rename(base2, P19.1=P20)
+
+base1<-rename(base1, P20=P21_A1)
+base2<-rename(base2, P20=P21_A1)
+
+l<-list()
+for(i in 1:4){
+    l[[i]]<-paste(paste("P21_", LETTERS[1:4], sep="")[i], 1:5, sep="")
+}
+
+names(base1)[54:73]<-as.vector(sapply(l,c))
+
+l<-list()
+for(i in 1:5){
+    l[[i]]<-paste(paste("P21_", LETTERS[1:5], sep="")[i], 1:9, sep="")
+}
+names(base2)[54:98]<-as.vector(sapply(l,c))
+base2<-base2[,-c(59:62, 68:71, 77:80, 86:89, 95:98)]
+base2<-base2[,-c(74:78)]
+
+base1<-rename(base1, P22=P23)
+base2<-rename(base2, P22=P23)
+
+base1<-rename(base1, P23=P24)
+base2<-rename(base2, P23=P24)
+
+names(base1)[76:78]<-c("P24", "P24.1", "P25")
+names(base2)[76:78]<-c("P24", "P24.1", "P25")
+
+names(base1)[79:88]<-c("P25.1", "P26", "P26.1", paste("P27_", LETTERS[1:7], sep=""))
+names(base2)[79:88]<-c("P25.1", "P26", "P26.1", paste("P27_", LETTERS[1:7], sep=""))
+
+names(base1)[89:97]<-c("P27.1", paste("P28_", LETTERS[1:6], sep=""), "P28.1", "P29")
+names(base2)[89:97]<-c("P27.1", paste("P28_", LETTERS[1:6], sep=""), "P28.1", "P29")
+
+names(base1)[98:114]<-c("P30", "P31", "P31.1", "P32", paste("P33_", LETTERS[1:8], sep=""), "P34", "P35", "P35.1", "P36", "P37")
+names(base2)[98:114]<-c("P30", "P31", "P31.1", "P32", paste("P33_", LETTERS[1:8], sep=""), "P34", "P35", "P35.1", "P36", "P37")
 ```
 
+```{r, message=FALSE, warning=FALSE}
+base1<-apply(base1, 2, function(x){
+    ifelse(nchar(x)=="0", NA, x)
+})%>%
+    data.frame()
+base2<-apply(base2, 2, function(x){
+    ifelse(nchar(x)=="0", NA, x)
+})%>%
+    data.frame()
+138+304
+base<-full_join(base1, base2)
+rm(b1, b2, base1, base2, df, p, g, i, j, l, num, f, fsep, noms, repl, repl2)
+save.image("E:/Academico/Proyectos/GitHub/TCU/Unificacion/base.RData")
+base
+```
+```{r}
+#Detalles finales
+base<-select(base, -P1)
+base<-rename(base, P1=P2, P2=P3, P3=P4, P4=P5, P5=P6)
+base<-rename(base, P6=P7)
+base<-rename(base, P7=P8, P8=P9)
+base<-mutate(base, P9=c(x,y))
+base<-rename(base, P12=P13_A, P13_A=P13_B, P13_B=P13_C, P13_C=P13_D, P13_D=P13_E, P13_E=P14)
+base<-rename(base, P14=P15, P15=P16, P16=P17, P17=P18_A, P18_A=P18_B, P18_B=P18_C, 
+             P18_C=P18_D, P18_D=P18_E, P18_E=P18_F, P18.1=P19_A, P19_A=P19_B, P19_B=P19_C,
+             P19_C=P19_D, P19_D=P19_E, P19_E=P19_F)
+
+library(magrittr)
+base%<>%mutate_each(funs(as.factor))
+
+base %<>% mutate_each_(funs(as.character), c("P1", "P6", "P10_A2", "P10_B2", "P10_C2", 
+                                             "P10_D2", "P10_E2", "P10_F2", "P10_G2",
+                                             "P10_H2", "P10_I2", "P10_J2", "P12", 
+                                             "P15", "P17", "P18.1", "P19.1", names(base)[53:72],
+                                             "P23", "P25.1", "P26.1", "P27.1", "P28.1", "P29",
+                                             "P31.1", names(base)[101:108], "P35.1", 
+                                             "P36", "P37"))
+
+base
+```
 
