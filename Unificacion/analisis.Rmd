@@ -80,22 +80,12 @@ stopwords<-c(stopwords,"por","que","x","xq")
 stopwords<-stri_trans_general(stopwords,"Latin-ASCII")
 
 limpiar=function(texto){
-  # Eliminar los links
-  texto <- str_replace_all(texto,"(f|ht)(tp)(s?)(://)(.*)[.|/](.*)", " ")
-  # Elimina la referencia a un retuit
-  texto <- str_replace_all(texto,"(RT|via)((?:\\b\\W*@\\w+)+)", " ")
-  # Elimina los #hashtag
-  texto <- str_replace_all(texto,"#\\w+", " ")
   # Elimina los signos de puntuación
   texto <- str_replace_all(texto,"[[:punct:]]", " ")
   #Elimina tildes
   texto<-stri_trans_general(texto,"Latin-ASCII")
   # Elimina los números
   texto <- str_replace_all(texto,"[[:digit:]]", " ")
-  # Elimina espacios innecesarios
-  texto <- str_replace_all(texto,"[ \t]{2,}", " ")
-  texto <- str_replace_all(texto,"^\\s+|\\s+$", "")
-  texto <- str_replace_all(texto,"\\n", "")
   #Remueve emoticones y tildes
   texto=iconv(from = "latin1", to = "ASCII", sub="",texto)
   
@@ -150,6 +140,29 @@ n<-f(base$P2, base$P11, c("NS/NR", " 4", "4"," 5"), 1)
 El 97.5% de los entrevistados coinciden en que la formación ética debe ser parte del desarrollo profesional dentro ed la Administración de Negocios.       
 
 ```{r}
+f2<-function(lista){
+    lista<-lapply(lista, function(x){
+        x<-tolower(trimws(x))
+        x<-limpiar(x)
+        x<-round(sort(prop.table(table(x)), decreasing = TRUE)*100, 2)[1:3]
+        paste(names(x), paste(x, "%", sep=""))
+    }
+    )
+    mat<-t(sapply(lista, rbind))
+    colnames(mat)<-c("Top 1", "Top 2", "Top 3")
+    rownames(mat)<-paste("Posición", 1:nrow(mat))
+    mat
+}
+
+n<-f2(list(base$P13_A, base$P13_B, base$P13_C, base$P13_D, base$P13_E))
+```
+
+\captionsetup[table]{labelformat=empty}
+`r xtable::xtable(n, digits=1, caption='Pregunta 13: ¿Cuáles on los cinco principales valroes que, desde su criterio, deben trabajarse en la formación ética de los futuros profesionales en Administración de Negocios?')`        
+
+Las respuestas más recurrentes son la honestidad, la responsabilidad y el respeto; Estos son los valores más conocidos por los entrevistados.      
+
+```{r}
 base$P14<-recode(base$P14, `1`="Sí", `0`="No", ` 1`="Sí", ` 0`="No", `99`="NS/NR")
 n<-f(base$P2, base$P14, c("NS/NR"), 3)
 ```
@@ -168,6 +181,56 @@ n<-f(base$P2, base$P16, c("NS/NR"), 3)
 `r xtable::xtable(n, digits=1, caption='Pregunta 16: ¿Participa en algún proyecto o iniciativa que contribuya al fomento de la ética y la responsabilidad social empresarial?')`
 
 Casi el 90% de los entrevistados afirma que no participa en ningún proyecto o iniciativa que contribuya al fomento de la ética, principalmente en la carrera de Dirección de Empresas y al nivel de bachillerato en contaduría pública.
+
+```{r}
+n<-base%>%
+    select(P18_A:P18_E)%>%
+    mutate_all(as.character)%>%
+    mutate_all(as.numeric)%>%
+    summarise_all(mean, na.rm=TRUE)%>%
+    as.matrix()
+colnames(n)<-c("sensibilizacion", 
+               "motivacion", 
+               "conocimiento y experiencia", 
+               "habilidades blandas", "otro")
+n<-t(round(n, 2))
+colnames(n)<-"Calificación promedio"
+```
+
+\captionsetup[table]{labelformat=empty}
+`r xtable::xtable(n, digits=1, caption='Pregunta 18: ¿Qué beneficios ha derivado de participar en algún proyecto o iniciativa que contribuya al fomento de la ética y la responsabilidad social?')`
+
+Los entrevistados que podían responder ésta pregunta indican que el beneficio más importante es el desarrollo de habilidades blandas, como el trabajo en equipo, el liderazgo, la comunicación acertiva, entre otros.    
+
+```{r}
+l<-list(base$P19_A, base$P19_B, base$P19_C, base$P19_D, base$P19_E)
+l<-lapply(l, function(x){trimws(as.character(x))})
+l<-lapply(l, function(x){as.factor(x[grep("[0-8]", x)])})
+l<-lapply(l, function(x){recode(x, 
+                                `1`="falta de conocimiento", 
+                                `2`="falta de interes", 
+                                `3`="escasez de materiales y recursos", 
+                                `4`="escaso compromiso", 
+                                `5`="otros")})
+f2<-function(lista){
+    lista<-lapply(lista, function(x){
+        x<-tolower(trimws(x))
+        x<-round(sort(prop.table(table(x)), decreasing = TRUE)*100, 2)[1:2]
+        paste(names(x), paste(x, "%", sep=""))
+    }
+    )
+    mat<-t(sapply(lista, rbind))
+    colnames(mat)<-c("Top 1", "Top 2")
+    rownames(mat)<-paste("Posición", 1:nrow(mat))
+    mat
+}
+n<-f2(l)
+```
+
+\captionsetup[table]{labelformat=empty}
+`r xtable::xtable(n, digits=1, caption='Pregunta 19: ¿Qué obstáculos ha enfrentado al participar en algún proyecto o iniciativa que contribuya al fomento de la ética y la responsabilidad social?')`
+
+De todos los entrevistados que podían responder ésta pregunta, los obstáculo que más han enfrentado son la falta de conocimiento sobre el tema y la falta de interés por parte de los diferentes actores participantes.      
 
 ```{r}
 base$P20<-recode(base$P20, `1`="Sí", `0`="No", ` 1`="Sí", ` 0`="No", `99`="NS/NR")
@@ -336,6 +399,44 @@ n<-f(base$P2, base$P30, c("NS/NR"), 4)
 El 76% de los entrevistados desconoce el eje transversal acerca de la ética y valores de la EAN-UCR.        
 
 ```{r}
+n<-base%>%
+    select(P27_A:P27_G)%>%
+    mutate_all(as.character)%>%
+    mutate_all(as.numeric)%>%
+    summarise_all(mean, na.rm=TRUE)%>%
+    as.matrix()
+colnames(n)<-c("comportamiento", "confianza", "comunicación", "clima", "fortalecimiento de la empresa", "gestión de cambios", "otro")
+n<-t(round(n, 2))
+colnames(n)<-"Calificación promedio"
+```
+
+\captionsetup[table]{labelformat=empty}
+`r xtable::xtable(n, digits=1, caption='Pregunta 27: ¿Cuáles son los principales beneficios que se derivan de desarrollarse éticamente en el campo profesional edl Ámbito de Administración de Negocios?')`    
+
+La calificación promedio en la prioridad es sobre tener un comportamiento acorde con los valores personales y organizacionales que contribuyan a lograr una vida plena y un desempeño satisfactorio en el ámbito laboral.     
+
+```{r}
+n<-base%>%
+    select(P28_A:P28_F)%>%
+    mutate_all(as.character)%>%
+    mutate_all(as.numeric)%>%
+    summarise_all(mean, na.rm=TRUE)%>%
+    as.matrix()
+colnames(n)<-c("integrar formación ética en el plan", 
+               "trabajar con el sector empleador", 
+               "promover formación ética delntro del profesorado", 
+               "promover los valores", 
+               "promover desarrollo de proyectos", "otro")
+n<-t(round(n, 2))
+colnames(n)<-"Calificación promedio"
+```
+
+\captionsetup[table]{labelformat=empty}
+`r xtable::xtable(n, digits=1, caption='Pregunta 28: ¿Qué papel desempeñan las Escuelas de Administración de Negocios en la formación ética de los futuros profesionales?')`    
+
+Los dos papeles con mayor importancia son, de acuerdo con los entrevistados, integrar la formación ética dentro de cursos del plan de estudios de la carrera y promover la formación ética dentro del profesorado.       
+
+```{r}
 base$P31<-recode(base$P31, 
                  `99`="NS/NR",
                  ` 1`="Otro medio(s)", 
@@ -415,7 +516,11 @@ colnames(n)<-"Porcentaje"
 
 \captionsetup[table]{labelformat=empty}
 `r xtable::xtable(n, digits=1, caption='Pregunta 31: ¿Qué estrategias utiliza la EAN-UCR para favorecer la vivencia de los valores que sustenta?')`  
+
 El 60 % de los entrevistados piensa que la EAN-UCR desarrolla proyectos o iniciativas que promuevan la responsabilidad social empresarial (ej. tcu, proyectos sociales) para favorecer la vivencia de los valores que sustenta.        
 
 
+```{r}
+base
+```
 

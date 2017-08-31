@@ -1,0 +1,124 @@
+```{r}
+library(tm)
+library(stringi)
+library(stringr)
+library(tidytext)
+stopwords<-stopwords("es")
+stopwords<-c(stopwords,"por","que","x","xq", "ser", "parte", "tener", "debe")
+stopwords<-stri_trans_general(stopwords,"Latin-ASCII")
+limpiar=function(texto){
+  # Eliminar los links
+  texto <- str_replace_all(texto,"(f|ht)(tp)(s?)(://)(.*)[.|/](.*)", " ")
+  # Elimina la referencia a un retuit
+  texto <- str_replace_all(texto,"(RT|via)((?:\\b\\W*@\\w+)+)", " ")
+  # Elimina los #hashtag
+  texto <- str_replace_all(texto,"#\\w+", " ")
+  # Elimina los signos de puntuación
+  texto <- str_replace_all(texto,"[[:punct:]]", " ")
+  #Elimina tildes
+  texto<-stri_trans_general(texto,"Latin-ASCII")
+  # Elimina los números
+  texto <- str_replace_all(texto,"[[:digit:]]", " ")
+  # Elimina espacios innecesarios
+  texto <- str_replace_all(texto,"[ \t]{2,}", " ")
+  texto <- str_replace_all(texto,"^\\s+|\\s+$", "")
+  texto <- str_replace_all(texto,"\\n", "")
+  #Remueve emoticones y tildes
+  texto=iconv(from = "latin1", to = "ASCII", sub="",texto)
+  
+  #Remueve stopwords
+  texto=tolower(as.character(texto))
+  texto=removeWords(texto,stopwords)
+  texto
+}
+```
+
+#P6     
+
+```{r}
+library(wordcloud)
+stopwords<-stopwords("es")
+stopwords<-stri_trans_general(stopwords,"Latin-ASCII")
+wordcloud(limpiar(base$P6), min.freq = 20, scale=c(5, .2),colors= c("blue"), random.order = FALSE, random.color = FALSE)
+
+png(filename="./Wordclouds/P6.png")
+wordcloud(limpiar(base$P6), min.freq = 20, scale=c(5, .2),colors= c("blue"), random.order = FALSE, random.color = FALSE)
+dev.off()
+```
+
+#P12     
+
+```{r}
+stopwords<-stopwords("es")
+stopwords<-c(stopwords, "profesional", "etica", "negocios", "bien", "tener", "eticas",
+             "cualquier", "ser", "debe", "parte", "importante", "profesionales")
+stopwords<-stri_trans_general(stopwords,"Latin-ASCII")
+wordcloud(limpiar(base$P12), min.freq = 25, scale=c(5, .2),colors= c("blue"), random.order = FALSE, random.color = FALSE)
+
+png(filename="./Wordclouds/P12.png")
+wordcloud(limpiar(base$P12), min.freq = 20, scale=c(5, .2),colors= c("blue"), random.order = FALSE, random.color = FALSE)
+dev.off()
+```
+
+#P15     
+
+```{r}
+stopwords<-stopwords("es")
+stopwords<-stri_trans_general(stopwords,"Latin-ASCII")
+wordcloud(limpiar(base$P15), min.freq = 20, scale=c(5, .2),colors= c("blue"), random.order = FALSE, random.color = FALSE)
+
+png(filename="./Wordclouds/P15.png")
+wordcloud(limpiar(base$P15), min.freq = 20, scale=c(5, .2),colors= c("blue"), random.order = FALSE, random.color = FALSE)
+dev.off()
+```
+
+#P23     
+
+```{r}
+stopwords<-stopwords("es")
+stopwords<-c(stopwords, "tener", "ser", "mas", "importante")
+stopwords<-stri_trans_general(stopwords,"Latin-ASCII")
+wordcloud(limpiar(base$P23), min.freq = 15, scale=c(5, .2),colors= c("blue"), random.order = FALSE, random.color = FALSE)
+
+png(filename="./Wordclouds/P23.png")
+wordcloud(limpiar(base$P23), min.freq = 20, scale=c(5, .2),colors= c("blue"), random.order = FALSE, random.color = FALSE)
+dev.off()
+```
+
+#P25.1     
+
+```{r}
+stopwords<-stopwords("es")
+stopwords<-c(stopwords, "tener", "ser", "mas", "importante")
+stopwords<-stri_trans_general(stopwords,"Latin-ASCII")
+wordcloud(limpiar(base$P25.1), min.freq = 60, scale=c(5, .2),colors= c("blue"), random.order = FALSE, random.color = FALSE)
+
+png(filename="./Wordclouds/P25-1.png")
+wordcloud(limpiar(base$P25.1), min.freq = 60, scale=c(5, .2),colors= c("blue"), random.order = FALSE, random.color = FALSE)
+dev.off()
+```
+
+#P29    
+
+```{r}
+stopwords<-stopwords("es")
+stopwords<-c(stopwords, "temas", "ser", "mas", "importante")
+stopwords<-stri_trans_general(stopwords,"Latin-ASCII")
+wordcloud(limpiar(base$P29), min.freq = 20, scale=c(5, .2),colors= c("blue"), random.order = FALSE, random.color = FALSE)
+
+png(filename="./Wordclouds/P29.png")
+wordcloud(limpiar(base$P29), min.freq = 20, scale=c(5, .2),colors= c("blue"), random.order = FALSE, random.color = FALSE)
+dev.off()
+```
+
+#P36    
+
+```{r}
+stopwords<-stopwords("es")
+stopwords<-stri_trans_general(stopwords,"Latin-ASCII")
+wordcloud(limpiar(base$P36), min.freq = 20, scale=c(5, .2),colors= c("blue"), random.order = FALSE, random.color = FALSE)
+
+png(filename="./Wordclouds/P36.png")
+wordcloud(limpiar(base$P36), min.freq = 20, scale=c(5, .2),colors= c("blue"), random.order = FALSE, random.color = FALSE)
+dev.off()
+```
