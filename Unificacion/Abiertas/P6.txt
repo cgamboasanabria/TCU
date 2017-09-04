@@ -1,0 +1,443 @@
+"P6"
+"1"~"En los diversos cursos que se llevan, ya que la ética es vital en la formación como futuros Contadores y Auditores, en la aplicación de las mejores prácticas profesionales, así que diría que en los cursos de Contabilidad y Auditoría principalmente."
+"2"~"En realidad es una gran cantidad de cursos en la que algún profesor dice algo suelto, pero nunca nada concreto."
+"3"~"En varios cursos, principalmente los relacionados con Gerencia  se menciona el tema, si talvez no como parte del plan, si como parte de otros temas relacionados."
+"4"~"AUDITORIA GUBERNAMENTAL"
+"5"~"Practica integrativa"
+"6"~"Seminario de Alta Gerencia"
+"7"~"No hay un curso que pueda decir puntualmente pero a lo largo de la carrera se han dado temas en diferentes cursos y charlas que de una u otra forma el tema de la ética sale a flote y se nos menciona lo importante de hacer las cosas bien."
+"8"~"- Mercadeo - RRHH - Liderazgo - Práctica Integrativa"
+"9"~NA
+"10"~"Principios de gerencia Economía Internacional I Introducción a la administración Entorno legal"
+"11"~"INTRODUCCION A LA ADMINISTRACION. RELACIONES HUMANAS EN CONTEXTO EMPRESARIAL. PRACTICA INTEGRATIVA PARA TOMA DE DECISIONES. ESTRUCTURA DE LA CONTABILIDAD. MERCADEO GERENCIAL. GERENCIA DE INVESTIGACION DE MERCADOS. MERCADEO DE SERVICIOS. MERCADEO INTERNACIONAL. SEMINARIO DE ALTA GERENCIA. SON LOS QUE RECUERDO."
+"12"~"En ciertos cursos de liderazgo, se ha visto el tema de la etica pero no con mucha seriedad."
+"13"~"Recuerdo que donde más se menciona fue en Entorno legal I Y II  Sin embargo muchos cursos tienen un tema relacionado con esto. Excepto los de finanzas"
+"14"~"Relaciones humanas, mercadeo internacional, estrategias integradas de mercadeo"
+"15"~NA
+"16"~"gerencia de rh, principios de gerencia"
+"17"~"Algunos de finanzas, pero no en el ambito nacional"
+"18"~"Todos"
+"19"~"En casi todos se menciona pero no pasa de una clase"
+"20"~NA
+"21"~"DN 405 DN 381 DN 304"
+"22"~"Cursos de Conta Auditoria Control Interno"
+"23"~"Mercadeo internacional"
+"24"~"Principios de administración"
+"25"~"Contabilidad Legislacion Costos"
+"26"~"Liderazgo, Economía Globalizada I, Práctica Integrativa, Mercadeo Gerencial"
+"27"~"se menciona la ética como un tema transversal más que todo en la carrera de Contaduría Publica no tanto en Dirección de Empresas"
+"28"~"Mercadeo Internacional Relaciones Humanas en el Contexto Empresarial Empresariedad e Innovación Finanzas de Corto Plazo Algunos otros..."
+"29"~"Los cursos de auditoria"
+"30"~NA
+"31"~NA
+"32"~"No recuerdo específicamente en cuales, pero han sido varios."
+"33"~"Si, pero a modo muy general en cursos como los de auditoría, contabilidad y complementarios"
+"34"~"Control interno"
+"35"~"Principios de gerencia Práctica Integrativa"
+"36"~"Recursos humanos Economía internacional Gerencia general Liderazgo Contabilidad 2 Mercadeo de servicios Banca y sistema economico"
+"37"~"Introducción a los negocios Principios de gerencia  Recursos humanos Liderazgo Tecnologías de la información  Principios de Mercadeo  Publicidad y promoción  Principios de finanzas Mercadeo gerencial Practica integrativa"
+"38"~NA
+"39"~"RELACIONES HUMANAS EN EL CONTEXTO EMPRESARIAL INTRODUCCIÓN A LA ADMINISTRACIÓN DE NEGOCIOS PRINCIPIOS DE GERENCIA GERENCIA DE RECURSOS HUMANOS LIDERAZGO GERENCIAL Y MANEJO DEL CAMBIO PRINCIPIOS DE MERCADEO ENTORNO LEGAL DE LAS EMPRESAS 1 y 2 GERENCIA DE PUBLICIDAD Y PROMOCIÓN PRÁCTICA INTEGRATIVA DE GERENCIA GENERAL Y TOMA DE DECISIONES"
+"40"~"En la mayoría"
+"41"~NA
+"42"~NA
+"43"~"La mayoría"
+"44"~"Durante el 2015 se consideró el tema como de importancia a lo largo de cada curso, por tanto el tema ha sido parte de los temas planteados. Destaco Mercadeo Internacional con Leonardo Arroyo."
+"45"~NA
+"46"~"Entorno Legal de las Empresas"
+"47"~"Brevemente en algunos cursos de mercadeo pero con poca profundidad"
+"48"~"Si si nos ha hablado de ética pero un curso en particular no.O por lo menos que yo me acuerde no."
+"49"~NA
+"50"~NA
+"51"~"Los cursos de mercadeo y recursos humanos. Además de los cursos de auditoria."
+"52"~NA
+"53"~NA
+"54"~NA
+"55"~"en los cursos de Contabilidad, de Auditoría y de Costos"
+"56"~"Contabilidad Avanzada 1 se realizá exposiciones sobre ética"
+"57"~"La mayoría, esta pregunta debería ser una lista con todo los cursos y uno selecciona cuáles."
+"58"~"Todos los de mercadeo"
+"59"~"EN muchos"
+"60"~"Contabilidad Gerencia de Operaciones Mercadeo"
+"61"~NA
+"62"~"casi que en todos los de la carrera"
+"63"~"Gerencia de Recursos y Humanos y Principios de Gerencia"
+"64"~"Conceptos Generales de Auditoría I y II, Contabilidad Intermedia II y Contabilidad Avanzada I"
+"65"~"Todos"
+"66"~"Contabilidades  Auditorías  Administración"
+"67"~"En contabilidad intermedia con el profesor Ridiguer no daba lecturas de reflexion, en costos basicos con Jaqueline se realizo actividades de valores durante todo el curso."
+"68"~"En casi todos hay un apartado etico segun el tema del curso."
+"69"~"Conceptos generales de Auditoria I"
+"70"~"Auditorías informáticas Cursos de contabilidad Legislación laboral y comercial  Auditorías financieras"
+"71"~"Analisis Contable para Decisiones Gerenciales Auditoria Gubernamental Control Interno y Auditorias Especiales"
+"72"~"Principios de gerencia Gerencia de recursos humanos Tecnologías de información"
+"73"~"EN CASI TODOS SE VE AL MENOS UN APARTADO DE ETICA."
+"74"~"Mercadeo Gerenciales Principios de finanzas Principios de Gerencia"
+"75"~"Liderazgo Práctica gerencial"
+"76"~"en la mayoria (liderazgo, gerencias, etc)"
+"77"~"Los cursos de Auditoría como Conceptos 1 y 2 y Normas. En el curso e contabilidad avanzada I"
+"78"~"Practica Integrativa. Liderazgo Gerencial Bolsa de Valores"
+"79"~NA
+"80"~"En la mayoria"
+"81"~NA
+"82"~NA
+"83"~NA
+"84"~"Gerencia recursos humanos, Investigación de mercados, principios de mercadeo y mercadeo gerencial."
+"85"~NA
+"86"~"Práctica Integrativa de Gerencia General y Toma de Decisiones. Bolsa de Valores"
+"87"~"Principios de Contabilidad, administración y mercadeo"
+"88"~"En Contabilidad básica se hizo un trabajo sobre este tema y alguna charla en otro curso que no recuerdo."
+"89"~NA
+"90"~"En la mayoría de cursos los profesores hablan sobre ética. En los cursos de costos incluyen casos de ética."
+"91"~NA
+"92"~NA
+"93"~NA
+"94"~"cursos de legislación, auditoría, contaduría y la optativa de análisis contable"
+"95"~"Liderazgo, Entorno Legal I y II"
+"96"~"Gerencia de RRHH, Publicidad y Promoción, Liderazgo, principios de gerencia, entorno legal, entre otros."
+"97"~"Mercadeo Internacional"
+"98"~NA
+"99"~"Mercadeo Internacional, Estrategias y Tacticas de Negociacion, Seminario de Alta Gerencia...."
+"100"~NA
+"101"~"no me acuerdo el curso pero el tema se toca dependiendo de la realidad del país o del tema que se este viendo"
+"102"~NA
+"103"~NA
+"104"~"EN VARIOS PERO POR AHORA EL QUE ME LLEGA EN MENTE ES PRÁCTICA INTEGRATIVA Y LIDERAZGO"
+"105"~NA
+"106"~NA
+"107"~"ECONOMÍA INTERNACIONAL, LIDERAZGO"
+"108"~"ECONOMÍA INTERNACIONAL"
+"109"~"GERENCIA DE RECURSOS HUMANOS Y LIDERAZGO"
+"110"~"GERENCIA DE BASE DE DATOS, INTRODUCCIÓN A LOS NEGOCIOS Y GERENCIA DE RECURSOS HUMANOS"
+"111"~NA
+"112"~NA
+"113"~NA
+"114"~"ECONOMÍA Y FINANZAS"
+"115"~"ENTORNO LEGAL 1 Y 2, GERENCIA DE SISTEMAS DE BASE DE DATOS"
+"116"~"GERENCIA DE BASES DE DATOS, PRINCIPIOS DE GERENCIA"
+"117"~NA
+"118"~"RECURSOS HUMANOS Y FINANZAS"
+"119"~"VARIOS"
+"120"~"RECURSOS HUMANOS, INTRODUCCIÓN A LAS TECNOLOGÍAS DE COMUNICACIÓN Y GERENCIA DE BASES DE DATOS"
+"121"~"RECURSOS HUMANOS, ESTRUCTURAS DE CONTABILIDAD, ECONOMÍA INTERNACIONAL"
+"122"~"RECURSOS HUMANOS, PRINCIPIOS MERCADEO"
+"123"~"RECOMENDACIONES DE ALGUNOS PROFES"
+"124"~NA
+"125"~"MERCADEO, ENTORNO LEGAL, RELACIONES HUMANAS, FINANZAS, ETC"
+"126"~"SI, DN0301 CON RICARDO VALVERDE, EL SIEMPRE NOS MARCABA EL CONCEPTO DE ETICA, EXCELENTE PROFESOR, SIEMPRE SALIA DE LA CLASE CON GANA DE SER MEJOR"
+"127"~NA
+"128"~"EN LOS CURSOS SOBRE GERENCIAS DE MERCADEO, PUBLICIDAD, Y EN GENERAL EN CASI QUE EN TODOS LOS CURSO ESTA COMO EJE TRANSVERSAL, COMO EN ENTORNO LEGAL"
+"129"~"ECONOMIA INTERNACIONAL II, ENTORNO LEGAL DE LAS EMPRESAS I Y II"
+"130"~"GERENCIA DE RECURSOS HUMANOPS, GERENCIA DE BASES DE DATOS E INTRODUCCION A LA ADMINISTRACION DE NEGOCIOS"
+"131"~"GERENCIA DE RECURSOS HUMANOS, GERENCIA DE BASES DE DATOS Y PRINCIPIOS DE GERENCIA"
+"132"~"SE MENCIONÓ EN GRAN PARTE LOS CURSOS AL INICIO DE LA CARRERA EN RECURSOS HUMANOS, TECNOLOGÍA, CONTABILIDAD, FINANZAS, ENTORNO, INCLUSIVE LA ESCUELA IMPARTE SEMINARIOS"
+"133"~NA
+"134"~"PRINCIPIOS DE GERENCIA, GERENCIA DE RRHHH, PRINCIPIOS DE CONTABILIDAD, ESTRUCTURAS DE CONTABILIDAD, CURSOS DE MERCADEO"
+"135"~"EN LA MAYORÍA DE LOS CURSOS LA ÉTICA ES UN EJE TRANSVERSAL. CURSOS: RELACIONES HUMANAS EN EL CONTEXTO EMPRESARIAL, LIDERAZGO Y MANEJO DEL CAMBIO, ENTORNO LEGAL I Y II, PRINCIPIOS DE GERENCIA, GERENCIA DE RECURSOS HUMANOS Y ECONOMÍA INTERNACIONAL II"
+"136"~"LIDERAZGO GERENCIAL, INTRODUCCIÓN A LA ADMINISTRACIÓN DE NEGOCIOS, PRINCIPIOS DE GERENCIA, INTRODUCCIÓN A LAS TECNOLOGÍAS DE INFORMACIÓN Y RELACIONES HUMANAS"
+"137"~"LIDREAZGO, RELACIONES HUMANAS, CONTABILIDAD, ENTORNO"
+"138"~"RRHH, PUBLICIDAD Y PROMOCIÓN, GERENCIA DE VENTAS, ENTORNO LEGAL Y ECONOMÍA INTERNACIONAL"
+"139"~"Prac int, ent.legal.Marketing.Ventas.MercGerencial."
+"140"~"No se profundiza el tema"
+"141"~"Administración General, Recursos h7umanos, Auditoria, Humanidades."
+"142"~"Contabilidad, Auditoria,Informatica"
+"143"~"Contabilidad, Auditoria, Costos, Comercio, Etc..."
+"144"~"Costos 3 Contabilidad Avanzada 1"
+"145"~"Costos 3, Administración General"
+"146"~NA
+"147"~NA
+"148"~"Contabilidad, cursos de administración"
+"149"~"Entorno Gestión y Control Pc-0242"
+"150"~NA
+"151"~"Contabilidad intermedia 1 Contabilidad Avanzada 1"
+"152"~"Contabilidad y Costos"
+"153"~"Administración General, Contabilidad Avanzada 1, Conceptos Generales de Auditoria"
+"154"~"Administración General, Costos, Auditoria, Otros cursos..."
+"155"~NA
+"156"~NA
+"157"~"Administración General, Recursos Humanos"
+"158"~NA
+"159"~"Legislación Laboral, Contabilidades, Auditorias"
+"160"~NA
+"161"~"Administración general Legislación Laboral Mercadeo Contabilidades"
+"162"~"Costos 3"
+"163"~"Estadistica aplicada a la contaduría, contabilidad, auditorias"
+"164"~"Recursos Humanos, Administración General, Auditoría"
+"165"~"Recursos Humanos, Normas de Auditoría"
+"166"~"Conceptos de Auditoria I y II, Contabilidad Intermedia I y II"
+"167"~NA
+"168"~NA
+"169"~"Conceptos de Auditoria I y II Contabilidad Intermedia I y II"
+"170"~"Entorno 1 y 2, Comercio Internacional, Legislación Comercial, Contabilidad Básica"
+"171"~"Recursos Humanos y Humanidades"
+"172"~"Normas de auditoría, legislación laboral, conta, etc.."
+"173"~"Cursos de contabilidad, finanzas, legislaciones y auditoria."
+"174"~"Auditoria, Legislaciones, Contabilidades, casi todos"
+"175"~"Auditoría, Costos, Contabilidades, Tributación, Legislaciones, Comercio"
+"176"~"En varios cursos y fomentando los valores éticos"
+"177"~"Lesgilación tributaria actualmente y prácticamente odo el resto de cursos que conforma el plan incolucran la ética"
+"178"~NA
+"179"~"Cursos de Auditoria"
+"180"~"Todos"
+"181"~"Administración, Contabilidad y Auditoria"
+"182"~"Auditoria y Contabilidad"
+"183"~"Auditoria"
+"184"~"Gerencia de RRHH Sistemas de información gerencial entorno legal y practica integrativa"
+"185"~NA
+"186"~"Repertorio"
+"187"~"Gerencia de RRHH, Gerencia de Sistemas de bases de datos, TI, Entorno Legal, Practica integrativa"
+"188"~"Comercio Internacional, Costos, RRHH"
+"189"~NA
+"190"~"Intro a los negocios, entorno, legislaciones, mercadeos, contabuilizaciones, finanzas"
+"191"~"Mercadeo General, Practicas integrativas"
+"192"~NA
+"193"~"PC0462"
+"194"~"No se recibe muy a fondo, se toca el tema en legislacion tributaria y aduanera, pero no de manera amplia"
+"195"~NA
+"196"~"Repertorio de ética"
+"197"~NA
+"198"~NA
+"199"~"Gerencia de RRHH Sistemas de información Entorno Legal Practica integrativa"
+"200"~"Practica integrativa Gerencia de RRHH"
+"201"~"RRHH, finanzas, entorno legal etc..."
+"202"~"Liderazgo"
+"203"~"Recursos Humanos Liderazgo Mercadeo"
+"204"~"Liderazgo y RRHH"
+"205"~"Economia Internacional y Liderazgo"
+"206"~"Gerencia de RRHH Principios de Gerencia Seminarios de alta Gerencia Práctica integrsativa"
+"207"~"Liderazgo y estrategias internacionales de mercadeo"
+"208"~NA
+"209"~"Práctica Integrativa, mercadeo gerencial, entorno legal, liderazgo"
+"210"~"Los profesores nos han hablado sobre la ética en todos los cursos de carrera."
+"211"~"Liderazgo, entorno legal, mercadeo gerencial, estructuras de contabilidad"
+"212"~"Mercado gerencial, Entorno legal de las empresas"
+"213"~"Practica Integrativa-Ventas-Mercadeo Gerencial"
+"214"~"Relaciones humanas"
+"215"~NA
+"216"~NA
+"217"~NA
+"218"~NA
+"219"~NA
+"220"~"Sociología"
+"221"~"Liderazgo, entorno legal de empresas 1 y 2"
+"222"~"Recursos humanos."
+"223"~"Ventas y relaciones humanas."
+"224"~NA
+"225"~NA
+"226"~NA
+"227"~NA
+"228"~NA
+"229"~NA
+"230"~"Liderazgo, Ventas, Relaciones humanas, Mercadeo, Entorno legal."
+"231"~"Relaciones humanas, ventas, liderazgo, mercado, entorno legal."
+"232"~"Liderazgo empresarial, mercadeo."
+"233"~NA
+"234"~NA
+"235"~"Liderazgo, relaciones humanas, ventas, mercadeo, entorno legal 1 y 2"
+"236"~"Liderazgo, entorno legal, mercado gerencial."
+"237"~"Entorno legal 1 y 2, principios de mercadeo, mercadeo de servicios,mercadeo gerencial, práctica integrativa, relaciones humanas."
+"238"~"Entorno legal, mercadeo"
+"239"~"Entorno legal de las empresas, relaciones humanas en el contexto empresarial, Gerencia de recursos humanos, Mercadeo, Gerencia de servicio al cliente"
+"240"~NA
+"241"~NA
+"242"~NA
+"243"~"Liderazgo y principios de administración."
+"244"~"Humanidades, relaciones humanas, mercadeo."
+"245"~"Humanidades, relaciones humanas"
+"246"~NA
+"247"~"Humanidades."
+"248"~"Relaciones con el consumidor, recursos humanos en el contexto empresarial, gerencia de recursos humanos, mercadeo y ventas, entorno legal de empresas."
+"249"~"Entorno legal de las empresas"
+"250"~"Principios de gerencia, entorno legal de las empresas, sistemas de información gerencial"
+"251"~"Repertorio ética"
+"252"~"Estrategías y tácticas de negociación, relaciones humanas, humanidades, práctica integratica, publicidad, mercadeo, relaciones con el consumidor."
+"253"~"Entorno legal, finanzas, introducción a la administración, tecnología, relaciones con le consumidor, mercadeo de servicios."
+"254"~"Gerencia de relaciones con el consumidor, tácticas de negoción, práctica integral entre otros, entorno legal de las empresas, curso de finanzas."
+"255"~"Mercado gerencial, relaciones con el consumidor, tácticas de negociación, ventas, práctica integrativa, sistemas de información gerencial."
+"256"~NA
+"257"~"Liderazgo, entorno legal, gerencia de recursos humanos, finanzas."
+"258"~"Mercadeo, recursos humanos."
+"259"~NA
+"260"~"Entorno legal 1 y 2, liderazgo, gerencia de ventas, otros."
+"261"~"Diversos cursos, como los más recientes publicados donde se abarcaba este tema o entorno legal, y solo se mencionaba la importancia de la ética."
+"262"~"Relaciones humanas, liderazgo, finanzas."
+"263"~"Publicidad y promoción, gerencia de distribución de ventas, recursos humanos."
+"264"~"Práctica integrativa, entorno legal."
+"265"~NA
+"266"~"Liderazgo."
+"267"~"Algunos cursos de recursos humanos y mercadeo lo mencionan."
+"268"~"Contabilidad intermedio 2, informática para gerencia de negocios2, mercadeo básico."
+"269"~NA
+"270"~"Liderazgo gerencial, gerencia de ventas, entorno legal, principios de gerencia, principios de mercadeo."
+"271"~"Recursos humanos, principios de gerencia."
+"272"~"Liderazgo y gerencia empresarial."
+"273"~"Auditoría, contabilidades"
+"274"~NA
+"275"~NA
+"276"~"Costos 3 y 1, legislaciones."
+"277"~NA
+"278"~"Cursos de auditoria financiera, cursos contabilidad, cursos finanzas, informatica, legislacion"
+"279"~"En los curso de carrera."
+"280"~"Contabilidad, legislacion, informatica, administración, estadisticas, auditorías."
+"281"~"Contabilidad, legislacion, informatica, administración, estadistica aplicada, auditoria."
+"282"~"Legislacion laboral y comercial, contaduria, administracion de negocios, estadisiticas, auditorias, seminarios"
+"283"~"Gerencia de recursos humanos, liderazgo gerencial y manejo del cambio, práctica integrativa."
+"284"~"Liderazgo"
+"285"~"Liderzgo. Mercadeo Gerencial"
+"286"~"Principios de Gerencia"
+"287"~"Gerencia de RH y Principios de Gerencia"
+"288"~"Finanzas, mercadeo, Recursos Humanos, Administración de Negocios, Generales, TI"
+"289"~"Introducción a la Administración de Negocios"
+"290"~"En todos los cursos se toca el tema"
+"291"~NA
+"292"~"Liderazgo, Entorno legal, Recursos Humanos, Generales"
+"293"~"Si se menciona pero no con tanta profundidad."
+"294"~"Finanzas, Recusrsos Humanos y Liderazgo"
+"295"~"Principios de mercadeo, Gerencia de RRHH"
+"296"~"Entorno Legal de las Empresas, Principios de Gerencia, Gerencia de RH"
+"297"~"Entorno Legal, Base de Datos, Introducción a los negocios, Practica Integrada"
+"298"~"Responsabilidad ambiental"
+"299"~NA
+"300"~"Liderazgo, relaciones Humanas, Recursos Humanos, Principios de Gerencia"
+"301"~NA
+"302"~NA
+"303"~"Practica Integrativa"
+"304"~"Entorno Legal y Publicidad y Promoción"
+"305"~NA
+"306"~"Introducción a Administración, Negociación, Manejo Cambio"
+"307"~"Introducción Administración, Entorno Legal, Liderazgo."
+"308"~"Introducción a los negocios, principios de mercadeo, principios de gerencia, Liderazgo, Gerencia de Recursos Humanos, Relaciones Humanas, Mercadeo Ger"
+"309"~"No me acuerdo específicamente"
+"310"~"Sistemas de información gerencial, Principios de Gerencia. De forma conceptual"
+"311"~NA
+"312"~NA
+"313"~"ITI, Sistemas de Información Gerencial, Empresariedad e inovación"
+"314"~"Tacticas y estratégias de Negociación, Practica Integrativa, Liderazgo, Mercadeo, Finanzas."
+"315"~"Entorno Legal, Liderzgo, Practica Integrativa, Estrategias y Tacticas de negociación"
+"316"~"Finanzas, Gerencia, RRHH, Economía Internacional 2"
+"317"~"Estrategias de Negociación"
+"318"~"Liderazgo, Gerencia de Recursos Humanos, Principios de Mercadeo"
+"319"~"Relaciones Humanas en el costexto empresarial, Tacticas de Negociación"
+"320"~NA
+"321"~"Liderazgo"
+"322"~"Estrategias y tácticas de negociación."
+"323"~"Tactica de negociación"
+"324"~"Estrategias de Negociación"
+"325"~"Negociación, Mercadeo Gerencial, Practica Integrativa"
+"326"~"Estrategias de Negociación"
+"327"~"Generalmente los cursos de mercadeo, consumidor, empresariedad.}"
+"328"~NA
+"329"~"De una forma u otra el tema aparece a lo largo de casi todos los cursos."
+"330"~NA
+"331"~"Practica Integrativa para la toma de decisiones y Estrategias y tácticas de negociación."
+"332"~"Desde el año pasado, en todos los cursos."
+"333"~"Introducción a la administración de Negocios, Gerencia de Recursos Humanos, Practica Integrativa, Principios de Contabilidad, Gerencia de Ventas y Dis"
+"334"~"En varias materias se toca el tema"
+"335"~"Cursop de Liderazgo en 3er año."
+"336"~"Cursos relacionados con el tema de liderazgo y relaciones humanas."
+"337"~"Economía Internacional, Globalización y Gestión gerencial 1, Recursos Humanos y Principios de gerencia."
+"338"~"Relaciones Humanas, Mercadeo Servicios, Investigación Mercados, Decision Inversión. Estrategias Negociación, Principios de Gerencia, Introducción ne"
+"339"~NA
+"340"~"RRHH, Principios de gerencia, Contabilidad Intermedia 1, Practica Integrativa, Liderazgoy principios de mercadeo."
+"341"~"En todos los de contabilidad y en auditoría basicamnete. Legislación tributaria y Entorno Gestión y Control"
+"342"~"Costos, Normas Internacionales de Auditoría"
+"343"~"Contabilidad Básica, Contabilidad intermedia 1 y 2, AuditorÍa 1 y 2, InformÁTICA 1 Y 2."
+"344"~"Cursos de Auditoría, Administración General y Recursos Humanos."
+"345"~"Informática 2 para gerencia de negocios, Contabilidad, Seminario de Realidad Nacional, Auditoría."
+"346"~NA
+"347"~"Administración General, Administración de RRHH, Legislación Laboral, comercial y tributaria."
+"348"~"Contabilidad, Legislación, Mercadeo y administración."
+"349"~"Hemos visto temas de ética, pero muy poco, como enmercadeo, auditoría (código de ética)."
+"350"~NA
+"351"~NA
+"352"~NA
+"353"~"En la mayoría de cursos, especialmente Administración Gneral, Recursos Humanos, Auditoría y Finanzas."
+"354"~"Contabilidades, Administración, Legislación Laboral, Legislación Tributaria, Auditorías."
+"355"~NA
+"356"~NA
+"357"~"Contabilidad Intermedia 2"
+"358"~"En todos."
+"359"~NA
+"360"~"Contabilidad, Legislación, Auditoría"
+"361"~NA
+"362"~"En todos los cursos."
+"363"~"Aplicación Costos decisiones Corto plazo, Contabilidad intermedia 2, ontabilidad básica y avanzada 1 y 2."
+"364"~"Legislación. Contabilidad."
+"365"~NA
+"366"~NA
+"367"~"Entorno Legal 1 y 2, Economía, Contabilidad, Principios de Gerencia."
+"368"~"Principios de Gerencia"
+"369"~"En el curso de Mercadeo se mencionóy tuvimos una lectura, en otros cursos sin contemplarlo igualmente han abarcado un poco sobre la ética profesional."
+"370"~NA
+"371"~"Principios de Gerencia"
+"372"~"Liderazgo, RRHH, Gerencia."
+"373"~"DN 0321"
+"374"~"Cursos de mercadeo y finanzas"
+"375"~NA
+"376"~"Varios cursos de contabilidad"
+"377"~"Contaduría, Costos, Economía, Legislación y Recursos Humanos."
+"378"~"En casi todos los de Mercadeo, Principiuos de Gerencia, Practica Integrativa"
+"379"~"Practica Inetgrativa. Principios de Gerencia, Empresariedad e Innovación, Mercadeos."
+"380"~"Principios de Gerencia, Liderazgo Gerencial"
+"381"~"Principios de Gerencia y Liderazgo Gerencial."
+"382"~NA
+"383"~NA
+"384"~"Practica Integrativa, Principios de Gerencia, Cursos de Mercadeo."
+"385"~"Principios de Gerencia, Sistemas de Infromación Gerencial, Cursos de Mercadeo (todos)"
+"386"~"Se menciona como eje transversal en todos los cursos. Sistemas de información Gerencial, Gerencia de base de datos, Mercadeo y Finanzas."
+"387"~NA
+"388"~"Principios de Gerencia, Gerencia de Recursos Humanos y Liderazgo"
+"389"~"Sistemas de Información Gerencial, Finanzas, Principios de Mercadeo."
+"390"~NA
+"391"~"Liderazgo, Gerencia, Gerencia en Recursos Humanos, Entorno Legal de las Empresas 1 y 2"
+"392"~NA
+"393"~"Gerenci de Investigación, principios de Finanzas, Principios de Gerencia, Gerencia de Publicidad y Promoción."
+"394"~NA
+"395"~NA
+"396"~"Liderazgo Gerencial, Principios de Gerencia y Entorno Legal de las empresas 1y 2"
+"397"~"Base de Datos, gerencia de Recursos Humanos, Liderazgo"
+"398"~NA
+"399"~"Liderazgo, Principios de Gerencia, Principios de Mercadeo"
+"400"~"Bases de Datos, Principios de Gerencia, Finanzas (de corto plazo y principios), Principios de Mercadeo, Liderazgo."
+"401"~"Liderazgo, Principios de Gerencia, Gerencia de Recursos Humanos-"
+"402"~"Liderazgo, Recursos Humanos, Gerencia, Sistemas de Bases de Datos, Finanzas, Mercadeo, Sistemas de Información Gerencial."
+"403"~"Principios de Gerencia, gerencia de Recursos Humanos, Liderazgo, Gerencia de ventas y Dristribución."
+"404"~NA
+"405"~"Principios de mercadeo"
+"406"~"Liderazgo. Principios de Gerencia, Gerencia de Publicidad y Promoción, Contabildad, Finanzas."
+"407"~"Gerencia de Recursos Humanos, Liderazgo, Principios de Gerencia, Base de Datos, Principios de Finanzas, Gerencia de Publicidad y Promoción."
+"408"~"Todos los cursos de carrera"
+"409"~"Liderazgo, Recursos Humanos, Gerencia, Bases de Datos, Finanzas, Principios de Mercadeo, Sistemas de Información Gerencial."
+"410"~NA
+"411"~"En el curso Gerencia de Investigación de Mercados, Principios de Gerencia. Gerencia de Base de Datos y Finanzas."
+"412"~"Gerencia de Investigación de mercados, Principios de Marketing, Principios de Gerencia y Gerencia de Base de Datos"
+"413"~NA
+"414"~"Tecnicos y Administración de Recursos Humanos/Legislación laboral"
+"415"~"Gerencia de Recursos Humanos"
+"416"~"Legislación Comercial, Bancaria y Financiera"
+"417"~"Actualmente en todos, anteriormente ninguno"
+"418"~NA
+"419"~"Bolsa de Valores"
+"420"~NA
+"421"~"Liderazgo, Seminario de Alta Gerencia, Principios de Gerencia."
+"422"~"Estudios Generales y Sociología."
+"423"~"Introducción a la administración de negocios, Contabilidad, Sistemas de Información, Mercadeo, Finanzas, Economía, Principios de Gerencia."
+"424"~"administración, Recursos Humanos, Mercadeo, Contabilidad. Pero practicamente todos los cursos."
+"425"~"Liderazgo Gerencial, Relaciones con el consumidor y todos los de mercadeo."
+"426"~"Mercado de valores, Gerencias, Practica Integrativa, Recursos Humanos y Bolsa de valores."
+"427"~"Todos los cursos de Mercadeo, Liderazgo, Recursos Humanos."
+"428"~"Mercadeo Internacional y Bolsa de Valorres"
+"429"~NA
+"430"~"Relaciones Humanas, Liderazgo. No obstante, no se ha profundizado."
+"431"~"Entorno Legal, en otros cursos el tema está incluido pero lo ven por encima."
+"432"~"Liderazgo, Recursos Humanos."
+"433"~"Entorno Legal, Recursos Humanos, COnta, Finanzas"
+"434"~"Finanzas corto, mediano y largo plazo, Contabilidad, Mercadeo y Economía Internacional"
+"435"~"Gneralmente en todos se abarca el tema"
+"436"~"Practica Integrativa, Liderazgo, Análisis de Costos, Finanzas, Publicidad y promoción y Mercadeo Gerencial."
+"437"~"Mercadeo internacional"
+"438"~"Mercadeo Internacional, Gerencia de Operaciones, Análisis decisiones."
+"439"~"Entorno Legal, Contabilidad, Finanzas, Recursos Humanos."
+"440"~"Liderazgo Gerencial Principios de Gerencia Entorno Legal, Gerencia de RRHH"
+"441"~"Publicidad y Promocion Entorno Legal Mercado de Servicios"
+"442"~"Costoso, contabilidad y legislación"

@@ -1,0 +1,66 @@
+---
+title: "Preguntas abiertas"
+output: html_notebook
+---
+
+#P6     
+
+```{r}
+write.table(select(base, P6, P10_A2, P10_B2, P10_C2, P10_D2, P10_E2, 
+                   P10_F2, P10_G2, P10_H2, P10_I2, P10_J2, P12, P15, P17,
+                   P18.1, P19.1, P23, P25.1, P26.1, P27.1, P28.1, P29,
+                   P31.1, P35.1, P36, P37), file="./Abiertas/abiertas.txt", sep = "~")
+select(base, P12)
+```
+
+#P10        
+
+```{r}
+base
+```
+
+
+#P21
+```{r}
+P21data<-apply(select(base, P21_A1:P21_D5), 2, function(x){ifelse(x=="NaN", NA, x)})%>%
+    data.frame()
+
+#P21A
+P21A<-P21data%>%
+    select(P21_A1:P21_A5)%>%
+    as.list()%>%
+    lapply(na.omit)%>%
+    unlist()%>%
+    as.character()
+P21A<-P21A[grepl("[0-9]", P21A)==FALSE]
+
+#P21B
+P21B<-P21data%>%
+    select(P21_B1:P21_B5)%>%
+    as.list()%>%
+    lapply(na.omit)%>%
+    unlist()%>%
+    as.character()
+P21B<-P21B[grepl("[0-9]", P21B)==FALSE]
+
+#P21C
+P21C<-P21data%>%
+    select(P21_C1:P21_C5)%>%
+    as.list()%>%
+    lapply(na.omit)%>%
+    unlist()%>%
+    as.character()
+P21C<-P21C[grepl("[0-9]", P21C)==FALSE]
+
+#P21D
+P21D<-P21data%>%
+    select(P21_D1:P21_D5)%>%
+    as.list()%>%
+    lapply(na.omit)%>%
+    unlist()%>%
+    as.character()
+P21D<-P21D[grepl("[0-9]", P21D)==FALSE]
+```
+
+
+
